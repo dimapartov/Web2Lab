@@ -1,14 +1,12 @@
-package com.example.websecondlab.web.view;
+package com.example.websecondlab.web.view.user_input;
 
-import com.example.websecondlab.services.dtos.RoleDTO;
-
-public class UserRegistrationView {
+public class RegistrationModel {
 
     private String username;
     private String password;
 
 
-    public UserRegistrationView(String username, String password) {
+    public RegistrationModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

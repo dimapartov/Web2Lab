@@ -1,7 +1,7 @@
 package com.example.websecondlab.web.controllers;
 
 import com.example.websecondlab.services.UserService;
-import com.example.websecondlab.web.view.UserRegistrationView;
+import com.example.websecondlab.web.view.user_input.RegistrationModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String registerUser(UserRegistrationView newUser) {
+    public String registerUser(RegistrationModel newUser) {
         userService.registerUser(newUser);
         return "path to user page";
     }

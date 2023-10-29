@@ -2,13 +2,12 @@ package com.example.websecondlab.services.impl;
 
 import com.example.websecondlab.repositories.RoleRepository;
 import com.example.websecondlab.services.RoleService;
-import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
 import com.example.websecondlab.services.UserService;
 import com.example.websecondlab.consts.enums.RoleEnum;
-import com.example.websecondlab.web.view.UserRegistrationView;
+import com.example.websecondlab.web.view.user_input.RegistrationModel;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public void registerUser(UserRegistrationView newUser) {
+    public void registerUser(RegistrationModel newUser) {
         UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class);
         newUserDTO.setRole(roleService.getUserRole());
         this.addUser(newUserDTO);
