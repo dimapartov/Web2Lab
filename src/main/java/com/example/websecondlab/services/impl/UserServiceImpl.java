@@ -7,7 +7,7 @@ import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
 import com.example.websecondlab.services.UserService;
 import com.example.websecondlab.consts.enums.RoleEnum;
-import com.example.websecondlab.web.view.user_input.RegistrationModel;
+import com.example.websecondlab.web.view.user_input.RegisterModel;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public void registerUser(RegistrationModel newUser) {
+    public void registerUser(RegisterModel newUser) {
         UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class);
         newUserDTO.setRole(roleService.getUserRole());
         this.addUser(newUserDTO);
