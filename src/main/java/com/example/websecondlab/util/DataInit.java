@@ -1,11 +1,11 @@
 package com.example.websecondlab.util;
 
-import com.example.websecondlab.services.dtos.*;
-import com.example.websecondlab.services.*;
 import com.example.websecondlab.consts.enums.CategoryEnum;
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.RoleEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.services.*;
+import com.example.websecondlab.services.dtos.*;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,6 +35,14 @@ public class DataInit implements CommandLineRunner {
         seedData();
     }
 
+
+//    private void seedDataTest() throws Exception {
+//
+//        RoleDTO userRoleDTO = new RoleDTO(RoleEnum.USER);
+//        RoleDTO adminRoleDTO = new RoleDTO(RoleEnum.ADMIN);
+//        roleService.addRole(userRoleDTO);
+//        roleService.addRole(adminRoleDTO);
+//    }
 
     private void seedData() throws Exception {
 //----------------------------------------------------------------------------------------------------------------------

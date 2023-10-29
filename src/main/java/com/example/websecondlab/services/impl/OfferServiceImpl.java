@@ -6,6 +6,7 @@ import com.example.websecondlab.repositories.OfferRepository;
 import com.example.websecondlab.services.OfferService;
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.web.view.OffersView;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,9 @@ public class OfferServiceImpl implements OfferService {
 
 
     @Override
-    public OfferDTO addOffer(OfferDTO offerDTO) {
+    public void addOffer(OfferDTO offerDTO) {
         Offer offer = modelMapper.map(offerDTO, Offer.class);
-        offerRepository.save(offer);
-        return modelMapper.map(offer, OfferDTO.class);
+        offerRepository.saveAndFlush(offer);
     }
 
     @Override
@@ -72,6 +72,22 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.findAllBySellerUsername(username)
                 .stream()
                 .map(offer -> modelMapper.map(offer, OfferDTO.class))
+                .collect(Collectors.toList());
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public List<OffersView> getAllOffers() {
+        return offerRepository.findAll()
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersView.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OffersView> getAllOffersByMileageLowerThan(int mileage) {
+        return offerRepository.findAllByMileageLessThan(mileage)
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersView.class))
                 .collect(Collectors.toList());
     }
 }

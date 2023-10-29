@@ -1,13 +1,14 @@
 package com.example.websecondlab.services;
 
 import com.example.websecondlab.services.dtos.OfferDTO;
+import com.example.websecondlab.web.view.OffersView;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface OfferService {
 
-    OfferDTO addOffer(OfferDTO offerDTO);
+    void addOffer(OfferDTO offerDTO);
     void deleteOfferById(long id);
 
     List<OfferDTO> getOffersByMileageLowerThan(int mileage);
@@ -15,4 +16,7 @@ public interface OfferService {
     List<OfferDTO> getOffersByEngineType(String engineType);
     List<OfferDTO> getOffersByTransmissionType(String transmissionType);
     List<OfferDTO> getOffersBySeller(String username);
+//----------------------------------------------------------------------------------------------------------------------
+    List<OffersView> getAllOffers();
+    List<OffersView> getAllOffersByMileageLowerThan(int mileage);
 }

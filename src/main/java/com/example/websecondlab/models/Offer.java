@@ -24,34 +24,34 @@ public class Offer extends ImageUrlBaseEntity {
     protected Offer() {}
 
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
 
-    @Column(name = "year", nullable = false)
+    @Column(name = "year")
     public int getYear() {
         return year;
     }
 
-    @Column(name = "mileage", nullable = false)
+    @Column(name = "mileage")
     public int getMileage() {
         return mileage;
     }
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     public BigDecimal getPrice() {
         return price;
     }
 
     @Enumerated
-    @Column(name = "transmission_type", nullable = false)
+    @Column(name = "transmission_type")
     public TransmissionTypeEnum getTransmissionType() {
         return transmissionType;
     }
 
     @Enumerated
-    @Column(name = "engine_type", nullable = false)
+    @Column(name = "engine_type")
     public EngineTypeEnum getEngineType() {
         return engineType;
     }

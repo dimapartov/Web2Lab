@@ -1,10 +1,13 @@
 package com.example.websecondlab.services.impl;
 
+import com.example.websecondlab.repositories.RoleRepository;
+import com.example.websecondlab.services.RoleService;
 import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
 import com.example.websecondlab.services.UserService;
 import com.example.websecondlab.consts.enums.RoleEnum;
+import com.example.websecondlab.web.view.UserRegistrationView;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.websecondlab.consts.enums.RoleEnum.USER;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,13 +25,15 @@ public class UserServiceImpl implements UserService {
     private ModelMapper modelMapper;
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
-    public UserDTO addUser(UserDTO userDTO) {
+    public void addUser(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
-        userRepository.save(user);
-        return modelMapper.map(user, UserDTO.class);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
@@ -39,7 +46,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDTO> getUsersByRole(String role) {
         List<UserDTO> usersByRole = null;
         if (role.equalsIgnoreCase("user")) {
-            usersByRole = userRepository.findAllByRole_RoleEquals(RoleEnum.USER)
+            usersByRole = userRepository.findAllByRole_RoleEquals(USER)
                     .stream()
                     .map(user -> modelMapper.map(user, UserDTO.class))
                     .collect(Collectors.toList());
@@ -50,5 +57,11 @@ public class UserServiceImpl implements UserService {
                     .collect(Collectors.toList());
         }
         return usersByRole;
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void registerUser(UserRegistrationView newUser) {
+        newUser.setRole(roleService.getUserRole());
+        userRepository.saveAndFlush(modelMapper.map(newUser, User.class));
     }
 }

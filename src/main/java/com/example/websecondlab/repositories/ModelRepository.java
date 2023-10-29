@@ -12,4 +12,5 @@ public interface ModelRepository extends JpaRepository<Model, Long> {
 
     List<Model> findAllByCategory(CategoryEnum category);
     List<Model> findAllByBrandName(String brandName);
+
 }

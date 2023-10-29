@@ -1,5 +1,6 @@
 package com.example.websecondlab.services.impl;
 
+import com.example.websecondlab.consts.enums.RoleEnum;
 import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.models.Role;
 import com.example.websecondlab.repositories.RoleRepository;
@@ -21,10 +22,9 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public RoleDTO addRole(RoleDTO roleDTO) {
+    public void addRole(RoleDTO roleDTO) {
         Role role = modelMapper.map(roleDTO, Role.class);
-        roleRepository.save(role);
-        return modelMapper.map(role, RoleDTO.class);
+        roleRepository.saveAndFlush(role);
     }
 
     @Override
@@ -33,5 +33,12 @@ public class RoleServiceImpl implements RoleService {
                 .stream()
                 .map(role -> modelMapper.map(role, RoleDTO.class))
                 .collect(Collectors.toList());
+    }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+    @Override
+    public RoleDTO getUserRole() {
+        return modelMapper.map(roleRepository.findRoleByRole(RoleEnum.USER), RoleDTO.class);
     }
 }

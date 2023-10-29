@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteUserByUsername(String username);
 
     List<User> findAllByRole_RoleEquals(RoleEnum role);
+
+    User findUserByUsername(String username);
+
 }

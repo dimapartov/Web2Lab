@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface RoleService {
 
-    RoleDTO addRole(RoleDTO roleDTO);
+    void addRole(RoleDTO roleDTO);
 
     List<RoleDTO> getAllRoles();
+//----------------------------------------------------------------------------------------------------------------------
+    RoleDTO getUserRole();
 }

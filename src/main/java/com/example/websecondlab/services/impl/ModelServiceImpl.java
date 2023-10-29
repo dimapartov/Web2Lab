@@ -22,10 +22,9 @@ public class ModelServiceImpl implements ModelService {
 
 
     @Override
-    public ModelDTO addModel(ModelDTO modelDTO) {
+    public void addModel(ModelDTO modelDTO) {
         Model model = modelMapper.map(modelDTO, Model.class);
-        modelRepository.save(model);
-        return modelMapper.map(model, ModelDTO.class);
+        modelRepository.saveAndFlush(model);
     }
 
     @Override

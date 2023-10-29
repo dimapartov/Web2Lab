@@ -21,27 +21,27 @@ public class User extends ImageUrlBaseEntity {
     protected User() {}
 
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", unique = true)
     public String getUsername() {
         return username;
     }
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
 
-    @Column(name = "is_active", nullable = false)
+    @Column(name = "is_active")
     public boolean isActive() {
         return isActive;
     }

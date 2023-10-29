@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface BrandRepository extends JpaRepository<Brand, Long> {
 
     void deleteBrandByName(String name);
+
 }

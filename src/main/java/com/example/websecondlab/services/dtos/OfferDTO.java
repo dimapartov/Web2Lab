@@ -4,7 +4,6 @@ import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class OfferDTO {
 
@@ -18,7 +17,6 @@ public class OfferDTO {
     private EngineTypeEnum engineType;
     private UserDTO seller;
     private ModelDTO model;
-    private LocalDateTime created;
 
 
 
@@ -105,9 +103,6 @@ public class OfferDTO {
         this.model = model;
     }
 
-    public LocalDateTime getCreated() {
-        return created;
-    }
 
     @Override
     public String toString() {
@@ -125,7 +120,6 @@ public class OfferDTO {
                 ", brand="+ model.getBrand().getName() +
                 ", category=" + model.getCategory() +
                 ", url='" + model.getImageUrl() +
-                "', created=" + created +
                 '}';
     }
 }
