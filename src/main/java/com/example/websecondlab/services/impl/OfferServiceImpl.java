@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,12 +78,27 @@ public class OfferServiceImpl implements OfferService {
 //----------------------------------------------------------------------------------------------------------------------
     @Override
     public List<OffersDemoView> getAllOffers() {
-        return offerRepository.findAll()
-                .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
-                .collect(Collectors.toList());
-    }
 
+        List<OfferDTO> allOffersDtoList = offerRepository.findAll()
+                .stream()
+                .map(offer -> modelMapper.map(offer, OfferDTO.class))
+                .toList();
+
+        List<OffersDemoView> allOffersDemoView = new ArrayList<>();
+
+        for (OfferDTO offerDto : allOffersDtoList) {
+
+            OffersDemoView offerDemoView = modelMapper.map(offerDto, OffersDemoView.class);
+
+            offerDemoView.setModel(offerDto.getModel().getName());
+            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
+            offerDemoView.setSeller(offerDto.getSeller().getUsername());
+            allOffersDemoView.add(offerDemoView);
+        }
+        return allOffersDemoView;
+    }
+//----------------------------------------------------------------------------------------------------------------------
+//  ПЕРЕДЕЛАТЬ ПО ПРИМЕРУ ВЫШЕ
     @Override
     public List<OffersDemoView> getAllOffersByMileageLowerThan(int mileage) {
         return offerRepository.findAllByMileageLessThan(mileage)

@@ -10,47 +10,50 @@ public class OffersDemoView {
     private String description;
     private String imageUrl;
     private BigDecimal price;
-    private UserDTO seller;
-    private ModelDTO model;
+    private String seller;
+    private String model;
+    private String brand;
+
+    public OffersDemoView() {
+    }
 
     public String getDescription() {
         return description;
     }
-
     public String getImageUrl() {
         return imageUrl;
     }
-
     public BigDecimal getPrice() {
         return price;
     }
-
-    public UserDTO getSeller() {
+    public String getSeller() {
         return seller;
     }
-
-    public ModelDTO getModel() {
+    public String getModel() {
         return model;
     }
+    public String getBrand() {
+        return brand;
+    }
+
 
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-    public void setSeller(UserDTO seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
-
-    public void setModel(ModelDTO model) {
+    public void setModel(String model) {
         this.model = model;
+    }
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -59,9 +62,9 @@ public class OffersDemoView {
                 "description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +
-                ", seller=" + seller.getUsername() +
-                ", model=" + model.getName() +
-                ", brand=" + model.getBrand().getName() +
+                ", seller='" + seller + '\'' +
+                ", model='" + model + '\'' +
+                ", brand='" + brand + '\'' +
                 '}';
     }
 }
