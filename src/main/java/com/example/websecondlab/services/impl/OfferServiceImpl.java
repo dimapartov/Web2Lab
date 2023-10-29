@@ -6,7 +6,7 @@ import com.example.websecondlab.repositories.OfferRepository;
 import com.example.websecondlab.services.OfferService;
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-import com.example.websecondlab.web.view.OffersView;
+import com.example.websecondlab.web.view.OffersDemoView;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,18 +76,42 @@ public class OfferServiceImpl implements OfferService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public List<OffersView> getAllOffers() {
+    public List<OffersDemoView> getAllOffers() {
         return offerRepository.findAll()
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<OffersView> getAllOffersByMileageLowerThan(int mileage) {
+    public List<OffersDemoView> getAllOffersByMileageLowerThan(int mileage) {
         return offerRepository.findAllByMileageLessThan(mileage)
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OffersDemoView> getAllOffersByPriceLowerThan(BigDecimal price) {
+        return offerRepository.findAllByPriceLessThan(price)
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OffersDemoView> getAllOffersByEngineType(String engineType) {
+        return offerRepository.findAllByEngineType(EngineTypeEnum.valueOf(engineType.toUpperCase()))
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<OffersDemoView> getAllOffersByTransmissionType(String transmissionType) {
+        return offerRepository.findAllByTransmissionType(TransmissionTypeEnum.valueOf(transmissionType.toUpperCase()))
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
                 .collect(Collectors.toList());
     }
 }

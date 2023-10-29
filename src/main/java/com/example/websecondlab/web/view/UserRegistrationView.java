@@ -6,9 +6,12 @@ public class UserRegistrationView {
 
     private String username;
     private String password;
-    private RoleDTO role;
 
-    public UserRegistrationView() {}
+
+    public UserRegistrationView(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
 
     public String getUsername() {
@@ -19,9 +22,6 @@ public class UserRegistrationView {
         return password;
     }
 
-    public RoleDTO getRole() {
-        return role;
-    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -31,7 +31,4 @@ public class UserRegistrationView {
         this.password = password;
     }
 
-    public void setRole(RoleDTO role) {
-        this.role = role;
-    }
 }

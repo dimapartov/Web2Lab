@@ -1,13 +1,11 @@
 package com.example.websecondlab.web.view;
 
-import com.example.websecondlab.consts.enums.EngineTypeEnum;
-import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
 import com.example.websecondlab.services.dtos.ModelDTO;
 import com.example.websecondlab.services.dtos.UserDTO;
 
 import java.math.BigDecimal;
 
-public class OffersView {
+public class OffersDemoView {
 
     private String description;
     private String imageUrl;
@@ -57,7 +55,7 @@ public class OffersView {
 
     @Override
     public String toString() {
-        return "OffersView{" +
+        return "OffersDemoView{" +
                 "description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +

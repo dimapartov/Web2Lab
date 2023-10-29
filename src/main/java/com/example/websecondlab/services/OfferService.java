@@ -1,7 +1,7 @@
 package com.example.websecondlab.services;
 
 import com.example.websecondlab.services.dtos.OfferDTO;
-import com.example.websecondlab.web.view.OffersView;
+import com.example.websecondlab.web.view.OffersDemoView;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,6 +17,9 @@ public interface OfferService {
     List<OfferDTO> getOffersByTransmissionType(String transmissionType);
     List<OfferDTO> getOffersBySeller(String username);
 //----------------------------------------------------------------------------------------------------------------------
-    List<OffersView> getAllOffers();
-    List<OffersView> getAllOffersByMileageLowerThan(int mileage);
+    List<OffersDemoView> getAllOffers();
+    List<OffersDemoView> getAllOffersByMileageLowerThan(int mileage);
+    List<OffersDemoView> getAllOffersByPriceLowerThan(BigDecimal price);
+    List<OffersDemoView> getAllOffersByEngineType(String engineType);
+    List<OffersDemoView> getAllOffersByTransmissionType(String transmissionType);
 }

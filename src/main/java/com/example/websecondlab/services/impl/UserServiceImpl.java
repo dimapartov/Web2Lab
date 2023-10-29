@@ -2,6 +2,7 @@ package com.example.websecondlab.services.impl;
 
 import com.example.websecondlab.repositories.RoleRepository;
 import com.example.websecondlab.services.RoleService;
+import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
@@ -61,7 +62,8 @@ public class UserServiceImpl implements UserService {
 //----------------------------------------------------------------------------------------------------------------------
     @Override
     public void registerUser(UserRegistrationView newUser) {
-        newUser.setRole(roleService.getUserRole());
-        userRepository.saveAndFlush(modelMapper.map(newUser, User.class));
+        UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class);
+        newUserDTO.setRole(roleService.getUserRole());
+        this.addUser(newUserDTO);
     }
 }
