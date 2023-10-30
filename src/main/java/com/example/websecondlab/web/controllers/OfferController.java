@@ -2,12 +2,11 @@ package com.example.websecondlab.web.controllers;
 
 import com.example.websecondlab.services.OfferService;
 import com.example.websecondlab.web.view.OffersDemoView;
+import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -62,5 +61,12 @@ public class OfferController {
         model.addAttribute("allOffers", allOffersByTransmissionType);
         allOffersByTransmissionType.forEach(System.out::println);
         return "all-offers-by-transmission";
+    }
+
+    @PostMapping("/new")
+    public String createOffer(@RequestBody CreateOfferViewModel newOffer) {
+        offerService.createOffer(newOffer);
+        System.out.println(newOffer);
+        return "new-offer-page";
     }
 }

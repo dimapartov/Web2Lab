@@ -1,12 +1,18 @@
 package com.example.websecondlab.services.impl;
 
+import com.example.websecondlab.repositories.ModelRepository;
+import com.example.websecondlab.repositories.UserRepository;
+import com.example.websecondlab.services.ModelService;
+import com.example.websecondlab.services.dtos.ModelDTO;
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.models.Offer;
 import com.example.websecondlab.repositories.OfferRepository;
 import com.example.websecondlab.services.OfferService;
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.web.view.OffersDemoView;
+import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +27,10 @@ public class OfferServiceImpl implements OfferService {
 
     private final ModelMapper modelMapper;
     private OfferRepository offerRepository;
-
+    @Autowired
+    private ModelRepository modelRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     public OfferServiceImpl(ModelMapper modelMapper) {
@@ -138,5 +147,19 @@ public class OfferServiceImpl implements OfferService {
                 .stream()
                 .map(offer -> modelMapper.map(offer, OffersDemoView.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void createOffer(CreateOfferViewModel newOffer) {
+        OfferDTO newOfferDTO = modelMapper.map(newOffer, OfferDTO.class);
+        ModelDTO modelDTO = modelMapper.map(modelRepository.findModelByName(newOffer.getModel()), ModelDTO.class);
+        UserDTO userDTO = modelMapper.map(userRepository.findUserByUsername(newOffer.getSeller()), UserDTO.class);
+        newOfferDTO.setModel(modelDTO);
+        newOfferDTO.setSeller(userDTO);
+//        newOfferDTO.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType()));
+        newOfferDTO.setEngineType(EngineTypeEnum.DIESEL);
+//        newOfferDTO.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType()));
+        newOfferDTO.setTransmissionType(TransmissionTypeEnum.AUTOMATIC);
+        offerRepository.saveAndFlush(modelMapper.map(newOfferDTO,Offer.class));
     }
 }
