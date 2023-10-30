@@ -1,7 +1,7 @@
 package com.example.websecondlab.services;
 
 import com.example.websecondlab.services.dtos.UserDTO;
-import com.example.websecondlab.web.view.user_input.RegisterModel;
+import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 
 import java.util.List;
 
@@ -12,6 +12,6 @@ public interface UserService {
 
     List<UserDTO> getUsersByRole(String role);
 //----------------------------------------------------------------------------------------------------------------------
-    void registerUser(RegisterModel newUser);
+    void registerUser(RegisterViewModel newUser);
 
 }

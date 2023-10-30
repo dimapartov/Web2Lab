@@ -1,13 +1,13 @@
 package com.example.websecondlab.services.impl;
 
-import com.example.websecondlab.repositories.RoleRepository;
-import com.example.websecondlab.services.RoleService;
+import com.example.websecondlab.services.domain_services.RoleServiceDomain;
+import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
 import com.example.websecondlab.services.UserService;
 import com.example.websecondlab.consts.enums.RoleEnum;
-import com.example.websecondlab.web.view.user_input.RegisterModel;
+import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RoleService roleService;
-    @Autowired
-    private RoleRepository roleRepository;
+    private RoleServiceDomain roleServiceDomain;
+
 
     @Override
     public void addUser(UserDTO userDTO) {
@@ -60,9 +59,10 @@ public class UserServiceImpl implements UserService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public void registerUser(RegisterModel newUser) {
-        UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class);
-        newUserDTO.setRole(roleService.getUserRole());
+    public void registerUser(RegisterViewModel newUser) {
+        UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class); // Нужно ли из вью модели делать ДТО и далее работать с ней?
+        RoleDTO userRole = modelMapper.map(roleServiceDomain.getUserRole(), RoleDTO.class);
+        newUserDTO.setRole(userRole);
         this.addUser(newUserDTO);
     }
 }

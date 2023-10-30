@@ -46,8 +46,5 @@ public class RoleServiceImpl implements RoleService {
 
 
 //----------------------------------------------------------------------------------------------------------------------
-    @Override
-    public RoleDTO getUserRole() {
-        return modelMapper.map(roleRepository.findRoleByRole(RoleEnum.USER), RoleDTO.class);
-    }
+
 }

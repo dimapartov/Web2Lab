@@ -1,12 +1,12 @@
 package com.example.websecondlab.web.view.user_input;
 
-public class RegisterModel {
+public class RegisterViewModel {
 
     private String username;
     private String password;
 
 
-    public RegisterModel(String username, String password) {
+    public RegisterViewModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

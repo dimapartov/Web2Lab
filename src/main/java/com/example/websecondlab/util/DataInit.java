@@ -18,16 +18,21 @@ import java.util.Random;
 @Component
 public class DataInit implements CommandLineRunner {
 
+    private final BrandService brandService;
+    private final ModelService modelService;
+    private final OfferService offerService;
+    private final RoleService roleService;
+    private final UserService userService;
+
+
     @Autowired
-    private BrandService brandService;
-    @Autowired
-    private ModelService modelService;
-    @Autowired
-    private OfferService offerService;
-    @Autowired
-    private RoleService roleService;
-    @Autowired
-    private UserService userService;
+    public DataInit(BrandService brandService, ModelService modelService, OfferService offerService, RoleService roleService, UserService userService) {
+        this.brandService = brandService;
+        this.modelService = modelService;
+        this.offerService = offerService;
+        this.roleService = roleService;
+        this.userService = userService;
+    }
 
 
     @Override
@@ -35,14 +40,6 @@ public class DataInit implements CommandLineRunner {
         seedData();
     }
 
-
-//    private void seedDataTest() throws Exception {
-//
-//        RoleDTO userRoleDTO = new RoleDTO(RoleEnum.USER);
-//        RoleDTO adminRoleDTO = new RoleDTO(RoleEnum.ADMIN);
-//        roleService.addRole(userRoleDTO);
-//        roleService.addRole(adminRoleDTO);
-//    }
 
     private void seedData() throws Exception {
 //----------------------------------------------------------------------------------------------------------------------

@@ -10,5 +10,5 @@ public interface RoleService {
 
     List<RoleDTO> getAllRoles();
 //----------------------------------------------------------------------------------------------------------------------
-    RoleDTO getUserRole();
+
 }

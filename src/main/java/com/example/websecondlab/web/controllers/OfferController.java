@@ -16,8 +16,13 @@ import java.util.List;
 @RequestMapping("/offers")
 public class OfferController {
 
+    private final OfferService offerService;
+
     @Autowired
-    private OfferService offerService;
+    public OfferController(OfferService offerService) {
+        this.offerService = offerService;
+    }
+
 
     @GetMapping("")
     public String getAllOffers(Model model) {
