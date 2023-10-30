@@ -12,10 +12,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class BrandServiceImpl implements BrandService {
 
-    @Autowired
+    private final ModelMapper modelMapper;
     private BrandRepository brandRepository;
+
+
     @Autowired
-    private ModelMapper modelMapper;
+    public BrandServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Autowired
+    public void setBrandRepository(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
+    }
 
 
     @Override

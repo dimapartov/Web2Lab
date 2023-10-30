@@ -15,10 +15,19 @@ import java.util.stream.Collectors;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
+    private final ModelMapper modelMapper;
     private RoleRepository roleRepository;
+
+
+    @Autowired
+    public RoleServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
 
 
     @Override

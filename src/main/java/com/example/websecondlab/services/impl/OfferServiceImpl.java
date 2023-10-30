@@ -19,10 +19,19 @@ import java.util.stream.Collectors;
 @Service
 public class OfferServiceImpl implements OfferService {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
+    private final ModelMapper modelMapper;
     private OfferRepository offerRepository;
+
+
+    @Autowired
+    public OfferServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Autowired
+    public void setOfferRepository(OfferRepository offerRepository) {
+        this.offerRepository = offerRepository;
+    }
 
 
     @Override

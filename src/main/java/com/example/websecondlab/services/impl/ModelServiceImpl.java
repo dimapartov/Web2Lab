@@ -15,10 +15,19 @@ import java.util.stream.Collectors;
 @Service
 public class ModelServiceImpl implements ModelService {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
+    private final ModelMapper modelMapper;
     private ModelRepository modelRepository;
+
+
+    @Autowired
+    public ModelServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    @Autowired
+    public void setModelRepository(ModelRepository modelRepository) {
+        this.modelRepository = modelRepository;
+    }
 
 
     @Override
