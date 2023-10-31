@@ -1,11 +1,8 @@
 package com.example.websecondlab.web.view;
 
-import com.example.websecondlab.services.dtos.ModelDTO;
-import com.example.websecondlab.services.dtos.UserDTO;
-
 import java.math.BigDecimal;
 
-public class OffersDemoView {
+public class OffersDemoViewModel {
 
     private String description;
     private String imageUrl;
@@ -14,7 +11,7 @@ public class OffersDemoView {
     private String model;
     private String brand;
 
-    public OffersDemoView() {
+    public OffersDemoViewModel() {
     }
 
     public String getDescription() {
@@ -58,7 +55,7 @@ public class OffersDemoView {
 
     @Override
     public String toString() {
-        return "OffersDemoView{" +
+        return "OffersDemoViewModel{" +
                 "description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +

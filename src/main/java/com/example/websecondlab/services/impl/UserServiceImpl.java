@@ -60,9 +60,8 @@ public class UserServiceImpl implements UserService {
 //----------------------------------------------------------------------------------------------------------------------
     @Override
     public void registerUser(RegisterViewModel newUser) {
-        UserDTO newUserDTO = modelMapper.map(newUser, UserDTO.class); // Нужно ли из вью модели делать ДТО и далее работать с ней?
-        RoleDTO userRole = modelMapper.map(roleServiceDomain.getUserRole(), RoleDTO.class);
-        newUserDTO.setRole(userRole);
-        this.addUser(newUserDTO);
+        User newUserModel = modelMapper.map(newUser, User.class);
+        newUserModel.setRole(roleServiceDomain.getUserRole());
+        userRepository.saveAndFlush(newUserModel);
     }
 }

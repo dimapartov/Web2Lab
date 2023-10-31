@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(RegisterViewModel newUser) {
         userService.registerUser(newUser);
-        return "path to user page";
+        return "path to user home page";
     }
 
     @DeleteMapping("/delete")

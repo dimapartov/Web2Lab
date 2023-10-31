@@ -2,7 +2,6 @@ package com.example.websecondlab.services.impl;
 
 import com.example.websecondlab.repositories.ModelRepository;
 import com.example.websecondlab.repositories.UserRepository;
-import com.example.websecondlab.services.ModelService;
 import com.example.websecondlab.services.dtos.ModelDTO;
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.models.Offer;
@@ -11,7 +10,7 @@ import com.example.websecondlab.services.OfferService;
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
 import com.example.websecondlab.services.dtos.UserDTO;
-import com.example.websecondlab.web.view.OffersDemoView;
+import com.example.websecondlab.web.view.OffersDemoViewModel;
 import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,57 +94,57 @@ public class OfferServiceImpl implements OfferService {
     }
 //----------------------------------------------------------------------------------------------------------------------
     @Override
-    public List<OffersDemoView> getAllOffers() {
+    public List<OffersDemoViewModel> getAllOffers() {
 
         List<OfferDTO> allOffersDtoList = offerRepository.findAll()
                 .stream()
                 .map(offer -> modelMapper.map(offer, OfferDTO.class))
                 .toList();
 
-        List<OffersDemoView> allOffersDemoView = new ArrayList<>();
+        List<OffersDemoViewModel> allOffersDemoViewModel = new ArrayList<>();
 
         for (OfferDTO offerDto : allOffersDtoList) {
 
-            OffersDemoView offerDemoView = modelMapper.map(offerDto, OffersDemoView.class);
+            OffersDemoViewModel offerDemoView = modelMapper.map(offerDto, OffersDemoViewModel.class);
 
             offerDemoView.setModel(offerDto.getModel().getName());
             offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
             offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOffersDemoView.add(offerDemoView);
+            allOffersDemoViewModel.add(offerDemoView);
         }
-        return allOffersDemoView;
+        return allOffersDemoViewModel;
     }
 //----------------------------------------------------------------------------------------------------------------------
 //  ПЕРЕДЕЛАТЬ ПО ПРИМЕРУ ВЫШЕ
     @Override
-    public List<OffersDemoView> getAllOffersByMileageLowerThan(int mileage) {
+    public List<OffersDemoViewModel> getAllOffersByMileageLowerThan(int mileage) {
         return offerRepository.findAllByMileageLessThan(mileage)
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<OffersDemoView> getAllOffersByPriceLowerThan(BigDecimal price) {
+    public List<OffersDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price) {
         return offerRepository.findAllByPriceLessThan(price)
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<OffersDemoView> getAllOffersByEngineType(String engineType) {
+    public List<OffersDemoViewModel> getAllOffersByEngineType(String engineType) {
         return offerRepository.findAllByEngineType(EngineTypeEnum.valueOf(engineType.toUpperCase()))
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<OffersDemoView> getAllOffersByTransmissionType(String transmissionType) {
+    public List<OffersDemoViewModel> getAllOffersByTransmissionType(String transmissionType) {
         return offerRepository.findAllByTransmissionType(TransmissionTypeEnum.valueOf(transmissionType.toUpperCase()))
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoView.class))
+                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
                 .collect(Collectors.toList());
     }
 
