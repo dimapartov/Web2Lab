@@ -26,12 +26,6 @@ public class BrandServiceImpl implements BrandService {
     }
 
 
-//    @Override
-//    public void registerBrand(BrandDTO brandDTO) {
-//        Brand brand = modelMapper.map(brandDTO, Brand.class);
-//        brandRepository.saveAndFlush(brand);
-//    }
-
     @Override
     public BrandDTO addBrand(BrandDTO brandDTO) {
         Brand brand = modelMapper.map(brandDTO, Brand.class);

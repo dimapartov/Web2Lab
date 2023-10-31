@@ -72,6 +72,8 @@ public class UserServiceImpl implements UserService {
         return usersByRole;
     }
 //----------------------------------------------------------------------------------------------------------------------
+//    Business
+
     @Override
     public void registerUser(String username, String password) {
         RegisterViewModel newUserViewModel = new RegisterViewModel(username, password);
