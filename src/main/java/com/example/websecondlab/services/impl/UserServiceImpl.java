@@ -1,8 +1,6 @@
 package com.example.websecondlab.services.impl;
 
 import com.example.websecondlab.repositories.RoleRepository;
-import com.example.websecondlab.services.domain_services.RoleServiceDomain;
-import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.services.dtos.UserDTO;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.UserRepository;
@@ -12,7 +10,6 @@ import com.example.websecondlab.util.validation.Validation;
 import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,23 +23,23 @@ import static com.example.websecondlab.consts.enums.RoleEnum.USER;
 public class UserServiceImpl implements UserService {
 
     private final ModelMapper modelMapper;
+    private final Validation validation;
     private UserRepository userRepository;
-    private RoleServiceDomain roleServiceDomain;
-    @Autowired
     private RoleRepository roleRepository;
 
-    @Autowired
-    private Validation validation;
-
 
     @Autowired
-    public UserServiceImpl(ModelMapper modelMapper, RoleServiceDomain roleServiceDomain) {
+    public UserServiceImpl(ModelMapper modelMapper, Validation validation) {
         this.modelMapper = modelMapper;
-        this.roleServiceDomain = roleServiceDomain;
+        this.validation = validation;
     }
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 
 
@@ -87,7 +84,6 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Illegal argument");
         } else {
             User newUserModel = modelMapper.map(newUserViewModel, User.class);
-//            newUserModel.setRole(roleServiceDomain.getUserRole());
             newUserModel.setRole(roleRepository.findRoleByRole(USER));
             newUserModel.setActive(true);
             userRepository.saveAndFlush(newUserModel);

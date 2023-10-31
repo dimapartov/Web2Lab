@@ -14,6 +14,7 @@ public class CreateOfferViewModel {
     private String engineType;
     private String description;
 
+
     public CreateOfferViewModel(String seller,
                                 String brand,
                                 String model,
