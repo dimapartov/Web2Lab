@@ -19,6 +19,7 @@ public interface OfferService {
     List<OfferDTO> getOffersBySeller(String username);
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
 //    Display offers
     List<OffersDemoViewModel> getAllOffers();
     List<OffersDemoViewModel> getAllOffersByMileageLowerThan(int mileage);

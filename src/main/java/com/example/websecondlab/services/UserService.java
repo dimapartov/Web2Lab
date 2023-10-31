@@ -12,6 +12,8 @@ public interface UserService {
 
     List<UserDTO> getUsersByRole(String role);
 //----------------------------------------------------------------------------------------------------------------------
+//    Business
+
     void registerUser(RegisterViewModel newUser);
 
 }

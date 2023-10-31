@@ -6,6 +6,5 @@ public interface BrandService {
 
     BrandDTO addBrand(BrandDTO brandDTO);
     void deleteBrandByName(String name);
-//----------------------------------------------------------------------------------------------------------------------
-//    void registerBrand(BrandDTO brandDTO);
+
 }
