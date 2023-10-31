@@ -1,5 +1,9 @@
 package com.example.websecondlab.web.view.user_input;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+
 public class RegisterViewModel {
 
     private String username;
@@ -12,10 +16,16 @@ public class RegisterViewModel {
     }
 
 
+    @NotNull
+    @NotEmpty
+    @Length(min = 3, message = "Name must contain at least 3 symbols")
     public String getUsername() {
         return username;
     }
 
+    @NotNull
+    @NotEmpty
+    @Length(min = 5, message = "Password must contain at least 5 symbols")
     public String getPassword() {
         return password;
     }

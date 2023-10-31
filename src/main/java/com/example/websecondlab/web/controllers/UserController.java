@@ -20,8 +20,8 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public String registerUser(RegisterViewModel newUser) {
-        userService.registerUser(newUser);
+    public String registerUser(@RequestParam String username, @RequestParam String password) {
+        userService.registerUser(username, password);
         return "path to user home page";
     }
 

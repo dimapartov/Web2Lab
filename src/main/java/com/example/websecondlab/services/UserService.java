@@ -14,6 +14,6 @@ public interface UserService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    void registerUser(RegisterViewModel newUser);
+    void registerUser(String username, String password);
 
 }

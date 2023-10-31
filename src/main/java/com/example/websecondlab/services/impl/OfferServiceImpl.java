@@ -1,5 +1,6 @@
 package com.example.websecondlab.services.impl;
 
+import com.example.websecondlab.models.Model;
 import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.ModelRepository;
 import com.example.websecondlab.repositories.UserRepository;
@@ -157,15 +158,15 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void createOffer(CreateOfferViewModel newOffer) {
-        OfferDTO newOfferDTO = modelMapper.map(newOffer, OfferDTO.class);
-        ModelDTO modelDTO = modelMapper.map(modelRepository.findModelByName(newOffer.getModel()), ModelDTO.class);
-        UserDTO userDTO = modelMapper.map(userRepository.findUserByUsername(newOffer.getSeller()), UserDTO.class);
-        newOfferDTO.setModel(modelDTO);
-        newOfferDTO.setSeller(userDTO);
-//        newOfferDTO.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType()));
-        newOfferDTO.setEngineType(EngineTypeEnum.DIESEL);
-//        newOfferDTO.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType()));
-        newOfferDTO.setTransmissionType(TransmissionTypeEnum.AUTOMATIC);
-        offerRepository.saveAndFlush(modelMapper.map(newOfferDTO,Offer.class));
+//        If view model is valid
+        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
+        Model model = modelRepository.findModelByName(newOffer.getModel());
+        User seller = userRepository.findUserByUsername(newOffer.getSeller());
+        newOfferModel.setModel(model);
+        newOfferModel.setSeller(seller);
+        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
+        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
+        offerRepository.saveAndFlush(newOfferModel);
     }
+
 }

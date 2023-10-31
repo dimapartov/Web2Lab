@@ -65,9 +65,9 @@ public class OfferController {
     }
 
     @PostMapping("/new")
-    public String createOffer(@RequestBody CreateOfferViewModel newOffer) {
+    public String createOffer(@RequestBody CreateOfferViewModel newOffer, Model model) {
         offerService.createOffer(newOffer);
-        System.out.println(newOffer);
+        model.addAttribute("newOffer", newOffer);
         return "new-offer-page";
     }
 }
