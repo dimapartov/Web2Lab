@@ -20,7 +20,6 @@ public class BrandServiceImpl implements BrandService {
     public BrandServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
-
     @Autowired
     public void setBrandRepository(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;

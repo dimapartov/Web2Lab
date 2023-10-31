@@ -1,5 +1,6 @@
 package com.example.websecondlab.services.impl;
 
+import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.ModelRepository;
 import com.example.websecondlab.repositories.UserRepository;
 import com.example.websecondlab.services.dtos.ModelDTO;
@@ -26,19 +27,25 @@ public class OfferServiceImpl implements OfferService {
 
     private final ModelMapper modelMapper;
     private OfferRepository offerRepository;
-    @Autowired
     private ModelRepository modelRepository;
-    @Autowired
     private UserRepository userRepository;
+
 
     @Autowired
     public OfferServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
-
     @Autowired
     public void setOfferRepository(OfferRepository offerRepository) {
         this.offerRepository = offerRepository;
+    }
+    @Autowired
+    public void setModelRepository(ModelRepository modelRepository) {
+        this.modelRepository = modelRepository;
+    }
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
 

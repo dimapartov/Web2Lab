@@ -23,7 +23,6 @@ public class ModelServiceImpl implements ModelService {
     public ModelServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
-
     @Autowired
     public void setModelRepository(ModelRepository modelRepository) {
         this.modelRepository = modelRepository;

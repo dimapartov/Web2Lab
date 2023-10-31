@@ -21,12 +21,20 @@ import static com.example.websecondlab.consts.enums.RoleEnum.USER;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private ModelMapper modelMapper;
-    @Autowired
+    private final ModelMapper modelMapper;
     private UserRepository userRepository;
-    @Autowired
     private RoleServiceDomain roleServiceDomain;
+
+
+    @Autowired
+    public UserServiceImpl(ModelMapper modelMapper, RoleServiceDomain roleServiceDomain) {
+        this.modelMapper = modelMapper;
+        this.roleServiceDomain = roleServiceDomain;
+    }
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 
     @Override

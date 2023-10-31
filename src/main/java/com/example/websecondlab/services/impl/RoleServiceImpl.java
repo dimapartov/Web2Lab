@@ -1,10 +1,9 @@
 package com.example.websecondlab.services.impl;
 
-import com.example.websecondlab.consts.enums.RoleEnum;
-import com.example.websecondlab.services.dtos.RoleDTO;
 import com.example.websecondlab.models.Role;
 import com.example.websecondlab.repositories.RoleRepository;
 import com.example.websecondlab.services.RoleService;
+import com.example.websecondlab.services.dtos.RoleDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ public class RoleServiceImpl implements RoleService {
     public RoleServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
-
     @Autowired
     public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -43,8 +41,5 @@ public class RoleServiceImpl implements RoleService {
                 .map(role -> modelMapper.map(role, RoleDTO.class))
                 .collect(Collectors.toList());
     }
-
-
 //----------------------------------------------------------------------------------------------------------------------
-
 }
