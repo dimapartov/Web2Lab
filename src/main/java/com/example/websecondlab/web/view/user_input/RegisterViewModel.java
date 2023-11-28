@@ -15,6 +15,8 @@ public class RegisterViewModel {
         this.password = password;
     }
 
+    public RegisterViewModel() {}
+
 
     @NotNull
     @NotEmpty
