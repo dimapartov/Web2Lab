@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.example.websecondlab.consts.enums.RoleEnum.USER;
@@ -47,12 +48,6 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         userRepository.saveAndFlush(user);
-    }
-
-    @Override
-    @Transactional
-    public void deleteUserByUserName(String username) {
-        userRepository.deleteUserByUsername(username);
     }
 
     @Override
@@ -91,4 +86,11 @@ public class UserServiceImpl implements UserService {
             userRepository.saveAndFlush(newUserModel);
         }
     }
+
+    @Override
+    @Transactional
+    public void deleteUserByUserName(String username) {
+        userRepository.deleteUserByUsername(username);
+    }
+
 }
