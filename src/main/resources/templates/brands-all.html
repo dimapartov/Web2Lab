@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column min-vh-100">
 <div th:replace="fragments/navbar"></div>
 <main class="flex-shrink-0">
     <div class="container">
@@ -20,6 +20,6 @@
         </div>
     </div>
 </main>
-<footer th:replace="fragments/footer"></footer>
+<footer class="mt-auto" th:replace="fragments/footer"></footer>
 </body>
 </html>

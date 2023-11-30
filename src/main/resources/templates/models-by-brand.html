@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"></head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column min-vh-100">
 <div th:replace="fragments/navbar">Navbar</div>
 <main class="flex-shrink-0">
     <div class="container">
@@ -14,16 +14,12 @@
                         <h4 th:text="${b.modelName}"></h4>
                         <h4 th:text="${b.category}"></h4>
                         <h2 th:text=" ${b.startYear} +' - '+ ${b.endYear}"></h2>
-                        <!--                        <h4 th:text="'Brand: ' + ${b.brand}"></h4>-->
-                        <!--                        <b th:href="@{|/offers/by-model/${b.name}|}" class="offer-link">-->
-                        <!--                            <h2 th:text="'See offers'"></h2>-->
-                        <!--                        </b>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
-<footer th:replace="fragments/footer"></footer>
+<footer class="mt-auto" th:replace="fragments/footer"></footer>
 </body>
 </html>
