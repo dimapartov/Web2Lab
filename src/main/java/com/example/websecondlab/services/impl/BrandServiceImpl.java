@@ -4,10 +4,13 @@ import com.example.websecondlab.services.dtos.BrandDTO;
 import com.example.websecondlab.models.Brand;
 import com.example.websecondlab.repositories.BrandRepository;
 import com.example.websecondlab.services.BrandService;
+import com.example.websecondlab.web.view.BrandViewModel;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BrandServiceImpl implements BrandService {
@@ -36,5 +39,17 @@ public class BrandServiceImpl implements BrandService {
     @Transactional
     public void deleteBrandByName(String name) {
         brandRepository.deleteBrandByName(name);
+    }
+
+//----------------------------------------------------------------------------------------------------------------------
+//    Business
+
+    @Override
+    public List<BrandViewModel> getAllBrands() {
+        List<BrandViewModel> allBrands = brandRepository.findAll()
+                .stream()
+                .map(brand -> modelMapper.map(brand, BrandViewModel.class))
+                .toList();
+        return allBrands;
     }
 }

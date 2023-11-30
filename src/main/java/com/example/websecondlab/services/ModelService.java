@@ -1,6 +1,7 @@
 package com.example.websecondlab.services;
 
 import com.example.websecondlab.services.dtos.ModelDTO;
+import com.example.websecondlab.web.view.ModelByBrandViewModel;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface ModelService {
     List<ModelDTO> getModelsByBrand(String brandName);
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
+    List<ModelByBrandViewModel> getAllModelsByBrand(String brandName);
 }

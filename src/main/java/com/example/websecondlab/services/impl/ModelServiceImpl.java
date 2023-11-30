@@ -5,6 +5,7 @@ import com.example.websecondlab.models.Model;
 import com.example.websecondlab.repositories.ModelRepository;
 import com.example.websecondlab.services.ModelService;
 import com.example.websecondlab.consts.enums.CategoryEnum;
+import com.example.websecondlab.web.view.ModelByBrandViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,16 @@ public class ModelServiceImpl implements ModelService {
                 .stream()
                 .map(model -> modelMapper.map(model, ModelDTO.class))
                 .collect(Collectors.toList());
+    }
+//----------------------------------------------------------------------------------------------------------------------
+//    Business
+
+    @Override
+    public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {
+        List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllByBrandName(brandName)
+                .stream()
+                .map(model -> modelMapper.map(model, ModelByBrandViewModel.class))
+                .toList();
+        return  modelsByBrand;
     }
 }
