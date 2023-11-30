@@ -8,43 +8,34 @@ public class ModelByBrandViewModel {
     private int startYear;
     private int endYear;
 
-
     public String getBrandName() {
         return brandName;
+    }
+    public String getModelName() {
+        return modelName;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public int getStartYear() {
+        return startYear;
+    }
+    public int getEndYear() {
+        return endYear;
     }
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
     }
-
-    public String getModelName() {
-        return modelName;
-    }
-
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
-
-    public String getCategory() {
-        return category;
-    }
-
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public int getStartYear() {
-        return startYear;
-    }
-
     public void setStartYear(int startYear) {
         this.startYear = startYear;
     }
-
-    public int getEndYear() {
-        return endYear;
-    }
-
     public void setEndYear(int endYear) {
         this.endYear = endYear;
     }

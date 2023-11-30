@@ -11,5 +11,6 @@ public interface BrandService {
     void deleteBrandByName(String name);
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
     List<BrandViewModel> getAllBrands();
 }

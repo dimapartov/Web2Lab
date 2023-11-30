@@ -17,7 +17,6 @@ public class OfferController {
 
     private OfferService offerService;
 
-
     @Autowired
     public void setOfferService(OfferService offerService) {
         this.offerService = offerService;

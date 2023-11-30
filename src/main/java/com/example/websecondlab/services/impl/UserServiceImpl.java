@@ -34,10 +34,12 @@ public class UserServiceImpl implements UserService {
         this.modelMapper = modelMapper;
         this.validation = validation;
     }
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Autowired
     public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -69,23 +71,6 @@ public class UserServiceImpl implements UserService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-//    @Override
-//    public void registerUser(String username, String password) {
-//        RegisterViewModel newUserViewModel = new RegisterViewModel(username, password);
-//        if (!this.validation.isValid(newUserViewModel)) {
-//            this.validation
-//                    .violations(newUserViewModel)
-//                    .stream()
-//                    .map(ConstraintViolation::getMessage)
-//                    .forEach(System.out::println);
-//            throw new IllegalArgumentException("Illegal argument");
-//        } else {
-//            User newUserModel = modelMapper.map(newUserViewModel, User.class);
-//            newUserModel.setRole(roleRepository.findRoleByRole(USER));
-//            newUserModel.setActive(true);
-//            userRepository.saveAndFlush(newUserModel);
-//        }
-//    }
     @Override
     public void registerUser(RegisterViewModel newUser) {
 

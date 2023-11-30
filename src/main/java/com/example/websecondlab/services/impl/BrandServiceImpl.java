@@ -18,11 +18,11 @@ public class BrandServiceImpl implements BrandService {
     private final ModelMapper modelMapper;
     private BrandRepository brandRepository;
 
-
     @Autowired
     public BrandServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     @Autowired
     public void setBrandRepository(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
@@ -40,7 +40,6 @@ public class BrandServiceImpl implements BrandService {
     public void deleteBrandByName(String name) {
         brandRepository.deleteBrandByName(name);
     }
-
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 

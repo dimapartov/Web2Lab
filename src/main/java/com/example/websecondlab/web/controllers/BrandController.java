@@ -18,7 +18,6 @@ public class BrandController {
 
     private BrandService brandService;
 
-
     @Autowired
     public void setBrandService(BrandService brandService) {
         this.brandService = brandService;

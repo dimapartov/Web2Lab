@@ -31,19 +31,21 @@ public class OfferServiceImpl implements OfferService {
     private ModelRepository modelRepository;
     private UserRepository userRepository;
 
-
     @Autowired
     public OfferServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     @Autowired
     public void setOfferRepository(OfferRepository offerRepository) {
         this.offerRepository = offerRepository;
     }
+
     @Autowired
     public void setModelRepository(ModelRepository modelRepository) {
         this.modelRepository = modelRepository;
     }
+
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;

@@ -19,11 +19,11 @@ public class ModelServiceImpl implements ModelService {
     private final ModelMapper modelMapper;
     private ModelRepository modelRepository;
 
-
     @Autowired
     public ModelServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     @Autowired
     public void setModelRepository(ModelRepository modelRepository) {
         this.modelRepository = modelRepository;

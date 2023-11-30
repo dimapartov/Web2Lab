@@ -11,8 +11,7 @@ public class OffersDemoViewModel {
     private String model;
     private String brand;
 
-    public OffersDemoViewModel() {
-    }
+    public OffersDemoViewModel() {}
 
     public String getDescription() {
         return description;
@@ -32,7 +31,6 @@ public class OffersDemoViewModel {
     public String getBrand() {
         return brand;
     }
-
 
     public void setDescription(String description) {
         this.description = description;

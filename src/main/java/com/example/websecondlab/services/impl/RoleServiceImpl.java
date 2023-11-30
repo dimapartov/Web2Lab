@@ -18,11 +18,11 @@ public class RoleServiceImpl implements RoleService {
     private final ModelMapper modelMapper;
     private RoleRepository roleRepository;
 
-
     @Autowired
     public RoleServiceImpl(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
+
     @Autowired
     public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
@@ -44,4 +44,5 @@ public class RoleServiceImpl implements RoleService {
     }
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
 }

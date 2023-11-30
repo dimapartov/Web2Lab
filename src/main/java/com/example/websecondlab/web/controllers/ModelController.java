@@ -16,7 +16,6 @@ public class ModelController {
 
     private ModelService modelService;
 
-
     @Autowired
     public void setModelService(ModelService modelService) {
         this.modelService = modelService;
