@@ -8,6 +8,15 @@ public class ModelByBrandViewModel {
     private int startYear;
     private int endYear;
 
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
     public String getModelName() {
         return modelName;
     }
@@ -43,18 +52,11 @@ public class ModelByBrandViewModel {
     @Override
     public String toString() {
         return "ModelByBrandViewModel{" +
-                "modelName='" + modelName + '\'' +
+                "brandName='" + brandName + '\'' +
+                ", modelName='" + modelName + '\'' +
                 ", category='" + category + '\'' +
                 ", startYear=" + startYear +
                 ", endYear=" + endYear +
                 '}';
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 }
