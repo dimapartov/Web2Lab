@@ -2,6 +2,7 @@ package com.example.websecondlab.web.view;
 
 public class ModelByBrandViewModel {
 
+    private String brandName;
     private String modelName;
     private String category;
     private int startYear;
@@ -47,5 +48,13 @@ public class ModelByBrandViewModel {
                 ", startYear=" + startYear +
                 ", endYear=" + endYear +
                 '}';
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 }
