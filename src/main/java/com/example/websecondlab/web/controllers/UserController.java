@@ -28,7 +28,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/register-page")
+    @GetMapping("/register")
     public String addUser() {
         return "users-register";
     }
@@ -38,21 +38,21 @@ public class UserController {
         return new RegisterViewModel();
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registerSubmit")
     public String registerUser(@Valid RegisterViewModel newUser, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("newUser", newUser);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newUser", bindingResult);
-            return "redirect:/user/register-page";
+            return "redirect:/user/register";
         }
         userService.registerUser(newUser);
         return "redirect:/";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteUser(@RequestParam String username) {
-        userService.deleteUserByUserName(username);
-        return "redirect:/register";
-    }
+    // @DeleteMapping("/delete")
+    // public String deleteUser(@RequestParam String username) {
+    //     userService.deleteUserByUserName(username);
+    //     return "redirect:/register";
+    // }
 
 }

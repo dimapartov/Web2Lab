@@ -12,11 +12,11 @@
                 <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
                     <h2 class="text-center text-dark mt-5">All Offers</h2>
                     <div th:each="o : ${allOffers}" class="d-flex flex-column bg-text mb-3">
-                        <h2 th:text="'Model: ' + ${o.model}"></h2>
-                        <h4 th:text="'Brand: ' + ${o.brand}"></h4>
+                        <h2 th:text="'Brand: ' + ${o.brand}"></h2>
+                        <h4 th:text="'Model: ' + ${o.model}"></h4>
                         <h4 th:text="'Price: ' + ${o.price}"></h4>
                         <h4 th:text="'Seller: ' + ${o.seller}"></h4>
-                        <h4 th:text="'Description: ' + ${#strings.substring(o.description,0,5)}"></h4>
+                        <!-- <h4 th:text="'Description: ' + ${#strings.substring(o.description,0,5)}"></h4> -->
                         <!--                    <h4><a class="btn-block"-->
                         <!--                           th:href="@{/companies/company-details/{company-name}(company-name=${c.name})}">Detail-->
                         <!--                        info</a></h4>-->

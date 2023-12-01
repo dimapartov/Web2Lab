@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 public class OffersDemoViewModel {
 
-    private String description;
     private String imageUrl;
     private BigDecimal price;
     private String seller;
@@ -13,9 +12,6 @@ public class OffersDemoViewModel {
 
     public OffersDemoViewModel() {}
 
-    public String getDescription() {
-        return description;
-    }
     public String getImageUrl() {
         return imageUrl;
     }
@@ -32,9 +28,6 @@ public class OffersDemoViewModel {
         return brand;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
@@ -54,7 +47,6 @@ public class OffersDemoViewModel {
     @Override
     public String toString() {
         return "OffersDemoViewModel{" +
-                "description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +
                 ", seller='" + seller + '\'' +
