@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="fragments/head"></head>
+
 <body class="d-flex flex-column min-vh-100">
-<div th:replace="fragments/navbar"></div>
-<main class="flex-shrink-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
-                <div class='row mb-4 d-flex justify-content-around'>
-                    <div th:each="b : ${allBrands}" class="col-md-4 d-flex flex-column bg-text mb-3 rounded offer-item"
-                         style="margin: 15px;">
-                        <a th:href="@{|/models/by-brand/${b.brandName}|}" class="brand-link">
-                            <h2 th:text="${b.brandName}"></h2>
-                        </a>
+    <div th:replace="fragments/navbar"></div>
+    <main class="flex-shrink-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
+                    <div class='row mb-4 d-flex justify-content-around'>
+                        <div th:each="b : ${allBrands}"
+                            class="col-md-4 d-flex flex-column bg-text mb-3 rounded offer-item" style="margin: 15px;">
+                            <a th:href="@{|/models/by-brand/${b.brandName}|}" class="brand-link">
+                                <h2 th:text="${b.brandName}"></h2>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-<footer class="mt-auto" th:replace="fragments/footer"></footer>
+    </main>
+    <footer class="mt-auto" th:replace="fragments/footer"></footer>
 </body>
+
 </html>
