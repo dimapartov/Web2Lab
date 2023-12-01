@@ -18,7 +18,10 @@
                             class="col-md-4 d-flex flex-column bg-text mb-3 rounded model-item" style="margin: 15px;">
                             <h4 th:text="${m.modelName}"></h4>
                             <h4 th:text="${m.category}"></h4>
-                            <h2 th:text=" ${m.startYear} +' - '+ ${m.endYear}"></h2>
+                            <h4 th:text=" ${m.startYear} +' - '+ ${m.endYear}"></h4>
+                            <a th:href="@{|/offers/by-model/${m.modelName}|}" class="offer-link">
+                                <h2 th:text="'See offers'"></h2>
+                            </a>
                         </div>
                     </div>
                 </div>

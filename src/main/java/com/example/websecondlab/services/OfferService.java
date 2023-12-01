@@ -26,6 +26,7 @@ public interface OfferService {
     List<OffersDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
     List<OffersDemoViewModel> getAllOffersByEngineType(String engineType);
     List<OffersDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
+    List<OffersDemoViewModel> getAllOffersByModel(String modelName);
 //    Create offer
     void createOffer(CreateOfferViewModel newOffer);
 }

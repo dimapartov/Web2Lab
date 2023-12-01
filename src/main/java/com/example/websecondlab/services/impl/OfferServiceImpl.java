@@ -225,4 +225,13 @@ public class OfferServiceImpl implements OfferService {
         newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
         offerRepository.saveAndFlush(newOfferModel);
     }
+
+    @Override
+    public List<OffersDemoViewModel> getAllOffersByModel(String modelName) {
+        List<OffersDemoViewModel> allOffersByModel = offerRepository.findAllByModelName(modelName)
+                .stream()
+                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
+                .toList();
+        return allOffersByModel;
+    }
 }
