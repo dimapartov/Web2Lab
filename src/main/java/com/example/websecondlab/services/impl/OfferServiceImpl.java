@@ -228,10 +228,22 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public List<OffersDemoViewModel> getAllOffersByModel(String modelName) {
-        List<OffersDemoViewModel> allOffersByModel = offerRepository.findAllByModelName(modelName)
+        List<OfferDTO> allOffersDtoList = offerRepository.findAllByModelName(modelName)
                 .stream()
-                .map(offer -> modelMapper.map(offer, OffersDemoViewModel.class))
+                .map(offer -> modelMapper.map(offer, OfferDTO.class))
                 .toList();
-        return allOffersByModel;
+
+        List<OffersDemoViewModel> allOffersDemoViewModel = new ArrayList<>();
+
+        for (OfferDTO offerDto : allOffersDtoList) {
+
+            OffersDemoViewModel offerDemoView = modelMapper.map(offerDto, OffersDemoViewModel.class);
+
+            offerDemoView.setModel(offerDto.getModel().getName());
+            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
+            offerDemoView.setSeller(offerDto.getSeller().getUsername());
+            allOffersDemoViewModel.add(offerDemoView);
+        }
+        return allOffersDemoViewModel;
     }
 }
