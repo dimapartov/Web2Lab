@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.websecondlab.services.dtos.OfferDTO;
-import com.example.websecondlab.web.view.OffersDemoViewModel;
+import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 
 public interface OfferService {
@@ -21,12 +21,12 @@ public interface OfferService {
 //    Business
 
 //    Display offers
-    List<OffersDemoViewModel> getAllOffers();
-    List<OffersDemoViewModel> getAllOffersByMileageLowerThan(int mileage);
-    List<OffersDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
-    List<OffersDemoViewModel> getAllOffersByEngineType(String engineType);
-    List<OffersDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
-    List<OffersDemoViewModel> getAllOffersByModel(String modelName);
+    List<OfferDemoViewModel> getAllOffers();
+    List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage);
+    List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
+    List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
+    List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
+    List<OfferDemoViewModel> getAllOffersByModel(String modelName);
 //    Create offer
     void createOffer(CreateOfferViewModel newOffer);
 }

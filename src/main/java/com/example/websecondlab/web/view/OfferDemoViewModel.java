@@ -2,7 +2,7 @@ package com.example.websecondlab.web.view;
 
 import java.math.BigDecimal;
 
-public class OffersDemoViewModel {
+public class OfferDemoViewModel {
 
     private String imageUrl;
     private BigDecimal price;
@@ -10,7 +10,7 @@ public class OffersDemoViewModel {
     private String model;
     private String brand;
 
-    public OffersDemoViewModel() {}
+    public OfferDemoViewModel() {}
 
     public String getImageUrl() {
         return imageUrl;
@@ -46,7 +46,7 @@ public class OffersDemoViewModel {
 
     @Override
     public String toString() {
-        return "OffersDemoViewModel{" +
+        return "OfferDemoViewModel{" +
                 "imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +
                 ", seller='" + seller + '\'' +

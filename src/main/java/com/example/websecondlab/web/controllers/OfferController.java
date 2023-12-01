@@ -1,21 +1,13 @@
 package com.example.websecondlab.web.controllers;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.websecondlab.services.OfferService;
-import com.example.websecondlab.web.view.OffersDemoViewModel;
-import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 
 @Controller
 @RequestMapping("/offers")
@@ -43,7 +35,7 @@ public class OfferController {
 
 //    @GetMapping("/by-mileage")
 //    public String getAllOffersByMileageLowerThan(@RequestParam int mileage, Model model) {
-//        List<OffersDemoViewModel> allOffersByMileageLowerThan = offerService.getAllOffersByMileageLowerThan(mileage);
+//        List<OfferDemoViewModel> allOffersByMileageLowerThan = offerService.getAllOffersByMileageLowerThan(mileage);
 //        model.addAttribute("allOffers", allOffersByMileageLowerThan);
 //        allOffersByMileageLowerThan.forEach(System.out::println);
 //        return "all-offers-by-mileage";
@@ -51,7 +43,7 @@ public class OfferController {
 
 //    @GetMapping("/by-price")
 //    public String getAllOffersByPriceLowerThan(@RequestParam BigDecimal price, Model model) {
-//        List<OffersDemoViewModel> allOffersByPriceLowerThan = offerService.getAllOffersByPriceLowerThan(price);
+//        List<OfferDemoViewModel> allOffersByPriceLowerThan = offerService.getAllOffersByPriceLowerThan(price);
 //        model.addAttribute("allOffers", allOffersByPriceLowerThan);
 //        allOffersByPriceLowerThan.forEach(System.out::println);
 //        return "all-offers-by-price";
@@ -59,7 +51,7 @@ public class OfferController {
 
 //    @GetMapping("/by-engine")
 //    public String getAllOffersByEngineType(@RequestParam String engineType, Model model) {
-//        List<OffersDemoViewModel> allOffersByEngineType = offerService.getAllOffersByEngineType(engineType);
+//        List<OfferDemoViewModel> allOffersByEngineType = offerService.getAllOffersByEngineType(engineType);
 //        model.addAttribute("allOffers", allOffersByEngineType);
 //        allOffersByEngineType.forEach(System.out::println);
 //        return "all-offers-by-engine";
@@ -67,7 +59,7 @@ public class OfferController {
 
 //    @GetMapping("/by-transmission")
 //    public String getAllOffersByTransmissionType(@RequestParam String transmissionType, Model model) {
-//        List<OffersDemoViewModel> allOffersByTransmissionType = offerService.getAllOffersByTransmissionType(transmissionType);
+//        List<OfferDemoViewModel> allOffersByTransmissionType = offerService.getAllOffersByTransmissionType(transmissionType);
 //        model.addAttribute("allOffers", allOffersByTransmissionType);
 //        allOffersByTransmissionType.forEach(System.out::println);
 //        return "all-offers-by-transmission";
