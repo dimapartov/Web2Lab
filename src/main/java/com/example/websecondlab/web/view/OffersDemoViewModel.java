@@ -47,7 +47,7 @@ public class OffersDemoViewModel {
     @Override
     public String toString() {
         return "OffersDemoViewModel{" +
-                ", imageUrl='" + imageUrl + '\'' +
+                "imageUrl='" + imageUrl + '\'' +
                 ", price=" + price +
                 ", seller='" + seller + '\'' +
                 ", model='" + model + '\'' +
