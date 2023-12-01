@@ -1,11 +1,17 @@
 package com.example.websecondlab.models;
 
-import com.example.websecondlab.models.base.ImageUrlBaseEntity;
+import java.math.BigDecimal;
+
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-import jakarta.persistence.*;
+import com.example.websecondlab.models.base.ImageUrlBaseEntity;
 
-import java.math.BigDecimal;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "offers")

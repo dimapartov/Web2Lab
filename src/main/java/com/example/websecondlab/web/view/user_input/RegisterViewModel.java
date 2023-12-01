@@ -1,8 +1,9 @@
 package com.example.websecondlab.web.view.user_input;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
 
 public class RegisterViewModel {
 

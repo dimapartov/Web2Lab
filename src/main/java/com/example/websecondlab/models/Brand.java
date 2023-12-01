@@ -1,9 +1,14 @@
 package com.example.websecondlab.models;
 
-import com.example.websecondlab.models.base.CreatedModifiedBaseEntity;
-import jakarta.persistence.*;
-
 import java.util.Set;
+
+import com.example.websecondlab.models.base.CreatedModifiedBaseEntity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "brands")

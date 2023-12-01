@@ -1,13 +1,14 @@
 package com.example.websecondlab.repositories;
 
-import com.example.websecondlab.models.Offer;
-import com.example.websecondlab.consts.enums.EngineTypeEnum;
-import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
-import java.util.List;
+import com.example.websecondlab.consts.enums.EngineTypeEnum;
+import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.models.Offer;
 
 @Repository
 public interface OfferRepository extends JpaRepository<Offer, Long> {

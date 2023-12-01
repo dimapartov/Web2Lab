@@ -1,11 +1,11 @@
 package com.example.websecondlab.services;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.web.view.OffersDemoViewModel;
 import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 public interface OfferService {
 

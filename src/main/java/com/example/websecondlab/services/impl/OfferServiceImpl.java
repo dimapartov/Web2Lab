@@ -1,27 +1,26 @@
 package com.example.websecondlab.services.impl;
 
-import com.example.websecondlab.models.Model;
-import com.example.websecondlab.models.User;
-import com.example.websecondlab.repositories.ModelRepository;
-import com.example.websecondlab.repositories.UserRepository;
-import com.example.websecondlab.services.dtos.ModelDTO;
-import com.example.websecondlab.services.dtos.OfferDTO;
-import com.example.websecondlab.models.Offer;
-import com.example.websecondlab.repositories.OfferRepository;
-import com.example.websecondlab.services.OfferService;
-import com.example.websecondlab.consts.enums.EngineTypeEnum;
-import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-import com.example.websecondlab.services.dtos.UserDTO;
-import com.example.websecondlab.web.view.OffersDemoViewModel;
-import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.websecondlab.consts.enums.EngineTypeEnum;
+import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.models.Model;
+import com.example.websecondlab.models.Offer;
+import com.example.websecondlab.models.User;
+import com.example.websecondlab.repositories.ModelRepository;
+import com.example.websecondlab.repositories.OfferRepository;
+import com.example.websecondlab.repositories.UserRepository;
+import com.example.websecondlab.services.OfferService;
+import com.example.websecondlab.services.dtos.OfferDTO;
+import com.example.websecondlab.web.view.OffersDemoViewModel;
+import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 
 @Service
 public class OfferServiceImpl implements OfferService {

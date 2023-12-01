@@ -1,24 +1,25 @@
 package com.example.websecondlab.services.impl;
 
-import com.example.websecondlab.repositories.RoleRepository;
-import com.example.websecondlab.services.dtos.UserDTO;
-import com.example.websecondlab.models.User;
-import com.example.websecondlab.repositories.UserRepository;
-import com.example.websecondlab.services.UserService;
-import com.example.websecondlab.consts.enums.RoleEnum;
-import com.example.websecondlab.util.validation.Validation;
-import com.example.websecondlab.web.view.user_input.RegisterViewModel;
-import jakarta.transaction.Transactional;
-import jakarta.validation.ConstraintViolation;
+import static com.example.websecondlab.consts.enums.RoleEnum.USER;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.example.websecondlab.consts.enums.RoleEnum;
+import com.example.websecondlab.models.User;
+import com.example.websecondlab.repositories.RoleRepository;
+import com.example.websecondlab.repositories.UserRepository;
+import com.example.websecondlab.services.UserService;
+import com.example.websecondlab.services.dtos.UserDTO;
+import com.example.websecondlab.util.validation.Validation;
+import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 
-import static com.example.websecondlab.consts.enums.RoleEnum.USER;
+import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
 
 @Service
 public class UserServiceImpl implements UserService {

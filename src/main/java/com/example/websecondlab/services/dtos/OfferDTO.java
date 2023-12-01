@@ -1,9 +1,9 @@
 package com.example.websecondlab.services.dtos;
 
+import java.math.BigDecimal;
+
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-
-import java.math.BigDecimal;
 
 public class OfferDTO {
 

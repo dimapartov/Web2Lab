@@ -1,17 +1,18 @@
 package com.example.websecondlab.services.impl;
 
-import com.example.websecondlab.services.dtos.ModelDTO;
-import com.example.websecondlab.models.Model;
-import com.example.websecondlab.repositories.ModelRepository;
-import com.example.websecondlab.services.ModelService;
-import com.example.websecondlab.consts.enums.CategoryEnum;
-import com.example.websecondlab.web.view.ModelByBrandViewModel;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.example.websecondlab.consts.enums.CategoryEnum;
+import com.example.websecondlab.models.Model;
+import com.example.websecondlab.repositories.ModelRepository;
+import com.example.websecondlab.services.ModelService;
+import com.example.websecondlab.services.dtos.ModelDTO;
+import com.example.websecondlab.web.view.ModelByBrandViewModel;
 
 @Service
 public class ModelServiceImpl implements ModelService {

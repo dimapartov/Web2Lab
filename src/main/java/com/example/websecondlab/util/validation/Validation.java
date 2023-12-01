@@ -1,8 +1,8 @@
 package com.example.websecondlab.util.validation;
 
-import jakarta.validation.ConstraintViolation;
-
 import java.util.Set;
+
+import jakarta.validation.ConstraintViolation;
 
 public interface Validation {
 

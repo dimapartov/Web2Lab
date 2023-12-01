@@ -1,10 +1,16 @@
 package com.example.websecondlab.models;
 
+import java.util.Set;
+
 import com.example.websecondlab.consts.enums.RoleEnum;
 import com.example.websecondlab.models.base.IdBaseEntity;
-import jakarta.persistence.*;
 
-import java.util.Set;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "roles")

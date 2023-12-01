@@ -1,30 +1,39 @@
-//package com.example.websecondlab.util;
-//
-//import com.example.websecondlab.consts.enums.CategoryEnum;
-//import com.example.websecondlab.consts.enums.EngineTypeEnum;
-//import com.example.websecondlab.consts.enums.RoleEnum;
-//import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-//import com.example.websecondlab.services.*;
-//import com.example.websecondlab.services.dtos.*;
-//import com.github.javafaker.Faker;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.stereotype.Component;
-//
-//import java.math.BigDecimal;
-//import java.util.List;
-//import java.util.Random;
-//
-//@Component
-//public class DataInit implements CommandLineRunner {
-//
+// package com.example.websecondlab.util;
+
+// import java.math.BigDecimal;
+// import java.util.List;
+// import java.util.Random;
+
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.boot.CommandLineRunner;
+// import org.springframework.stereotype.Component;
+
+// import com.example.websecondlab.consts.enums.CategoryEnum;
+// import com.example.websecondlab.consts.enums.EngineTypeEnum;
+// import com.example.websecondlab.consts.enums.RoleEnum;
+// import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+// import com.example.websecondlab.services.BrandService;
+// import com.example.websecondlab.services.ModelService;
+// import com.example.websecondlab.services.OfferService;
+// import com.example.websecondlab.services.RoleService;
+// import com.example.websecondlab.services.UserService;
+// import com.example.websecondlab.services.dtos.BrandDTO;
+// import com.example.websecondlab.services.dtos.ModelDTO;
+// import com.example.websecondlab.services.dtos.OfferDTO;
+// import com.example.websecondlab.services.dtos.RoleDTO;
+// import com.example.websecondlab.services.dtos.UserDTO;
+// import com.github.javafaker.Faker;
+
+// @Component
+// public class DataInit implements CommandLineRunner {
+
 //    private final BrandService brandService;
 //    private final ModelService modelService;
 //    private final OfferService offerService;
 //    private final RoleService roleService;
 //    private final UserService userService;
-//
-//
+
+
 //    @Autowired
 //    public DataInit(BrandService brandService, ModelService modelService, OfferService offerService, RoleService roleService, UserService userService) {
 //        this.brandService = brandService;
@@ -33,29 +42,29 @@
 //        this.roleService = roleService;
 //        this.userService = userService;
 //    }
-//
-//
+
+
 //    @Override
 //    public void run(String... args) throws Exception {
 //        seedData();
 //    }
-//
-//
+
+
 //    private void seedData() throws Exception {
-////----------------------------------------------------------------------------------------------------------------------
-////        roles generation
+// //----------------------------------------------------------------------------------------------------------------------
+// //        roles generation
 //        RoleDTO userRoleDTO = new RoleDTO(RoleEnum.USER);
 //        RoleDTO adminRoleDTO = new RoleDTO(RoleEnum.ADMIN);
-//
+
 //        roleService.addRole(userRoleDTO);
 //        roleService.addRole(adminRoleDTO);
-//
+
 //        List<RoleDTO> roles = roleService.getAllRoles();
-////----------------------------------------------------------------------------------------------------------------------
-////        users generation
+// //----------------------------------------------------------------------------------------------------------------------
+// //        users generation
 //        Faker faker = new Faker();
 //        Random random = new Random();
-//
+
 //        for (int i = 0; i < 5; i++) {
 //            UserDTO userDTO = new UserDTO();
 //            userDTO.setUsername(faker.name().username());
@@ -67,16 +76,16 @@
 //            userDTO.setLastName(faker.name().lastName());
 //            userService.addUser(userDTO);
 //        }
-//
+
 //        List<UserDTO> users = userService.getUsersByRole("user");
 //        List<UserDTO> admins = userService.getUsersByRole("admin");
-////----------------------------------------------------------------------------------------------------------------------
-////        cars generation
+// //----------------------------------------------------------------------------------------------------------------------
+// //        cars generation
 //        String[] brands = {"Audi", "Toyota", "BMW", "Mercedes", "Dodge"};
 //        for (String brand : brands) {
 //            BrandDTO brandDTO = new BrandDTO(brand);
 //            BrandDTO carBrand = brandService.addBrand(brandDTO);
-//
+
 //            switch (brand) {
 //                case ("Audi"):
 //                    ModelDTO modelDTO = new ModelDTO("Q1", CategoryEnum.CAR, faker.internet().url(), 2005, 2023, carBrand);
@@ -99,7 +108,7 @@
 //                    ModelDTO modelDTO7 = new ModelDTO("M3", CategoryEnum.CAR, faker.internet().url(), 1991, 2023, carBrand);
 //                    modelService.addModel(modelDTO6);
 //                    modelService.addModel(modelDTO7);
-//
+
 //                    break;
 //                case ("Mercedes"):
 //                    ModelDTO modelDTO8 = new ModelDTO("E", CategoryEnum.CAR, faker.internet().url(), 2000, 2023, carBrand);
@@ -121,15 +130,15 @@
 //                    break;
 //            }
 //        }
-//
+
 //        List<ModelDTO> models = modelService.getAllModels();
 //        List<ModelDTO> modelsByBrand = modelService.getModelsByBrand("Dodge");
 //        List<ModelDTO> modelsByCategory = modelService.getModelsByCategory("truck");
-////----------------------------------------------------------------------------------------------------------------------
-////        offers generation
+// //----------------------------------------------------------------------------------------------------------------------
+// //        offers generation
 //        EngineTypeEnum[] engineTypeValues = EngineTypeEnum.values();
 //        TransmissionTypeEnum[] transmissionTypeValues = TransmissionTypeEnum.values();
-//
+
 //        for (int i = 0; i < 5; i++) {
 //            OfferDTO offerDTO = new OfferDTO();
 //            offerDTO.setDescription(faker.lorem().sentence());
@@ -143,13 +152,13 @@
 //            offerDTO.setTransmissionType(transmissionTypeValues[random.nextInt(transmissionTypeValues.length)]);
 //            offerService.addOffer(offerDTO);
 //        }
-//
+
 //        List<OfferDTO> offersByEngineType = offerService.getOffersByEngineType("gasoline");
 //        List<OfferDTO> offersByMileageLowerThan = offerService.getOffersByMileageLowerThan(500_000);
 //        List<OfferDTO> offersByTransmissionType = offerService.getOffersByTransmissionType("manual");
 //        List<OfferDTO> offersByPriceLowerThan = offerService.getOffersByPriceLowerThan(BigDecimal.valueOf(500_000));
-////----------------------------------------------------------------------------------------------------------------------
-////        print demonstration
+// //----------------------------------------------------------------------------------------------------------------------
+// //        print demonstration
 //        System.out.println("---------- Roles: ----------");
 //        for (RoleDTO role : roles) {
 //            System.out.println(role);
@@ -191,4 +200,4 @@
 //            System.out.println(offer);
 //        }
 //    }
-//}
+// }

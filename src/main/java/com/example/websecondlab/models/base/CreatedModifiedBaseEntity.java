@@ -1,11 +1,12 @@
 package com.example.websecondlab.models.base;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class CreatedModifiedBaseEntity extends IdBaseEntity {

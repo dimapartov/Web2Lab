@@ -1,9 +1,9 @@
 package com.example.websecondlab.services;
 
+import java.util.List;
+
 import com.example.websecondlab.services.dtos.ModelDTO;
 import com.example.websecondlab.web.view.ModelByBrandViewModel;
-
-import java.util.List;
 
 public interface ModelService {
 

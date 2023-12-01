@@ -1,8 +1,8 @@
 package com.example.websecondlab.services;
 
-import com.example.websecondlab.services.dtos.RoleDTO;
-
 import java.util.List;
+
+import com.example.websecondlab.services.dtos.RoleDTO;
 
 public interface RoleService {
 
