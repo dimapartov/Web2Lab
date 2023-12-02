@@ -33,7 +33,7 @@ public class OfferController {
         return "offers-all";
     }
 
-    @GetMapping("/full/{offerId}")
+    @GetMapping("/details/{offerId}")
     public String getOfferInfo(@PathVariable long offerId, Model model) {
         model.addAttribute("offerWithInfo", offerService.getOfferInfo(offerId));
         return "offers-full-info";

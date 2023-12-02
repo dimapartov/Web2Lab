@@ -23,6 +23,25 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findAllBySellerUsername(String username);
     List<Offer> findAllByModelName(String modelName);
 
-    @Query(value = "SELECT new com.example.websecondlab.web.view.OfferFullViewModel(o.imageUrl, o.price, o.seller.username, o.model.name, m.brand.name, o.mileage, o.transmissionType, o.engineType, o.year, o.description, m.category) FROM Offer o JOIN o.model m JOIN o.seller u JOIN Brand b on m.brand.id=b.id WHERE o.id=:id")
+    @Query(value = "SELECT new com.example.websecondlab.web.view.OfferFullViewModel" +
+            "(" +
+            "o.imageUrl," +
+            "o.price," +
+            "o.seller.username," +
+            "o.model.name," +
+            "m.brand.name," +
+            "o.mileage," +
+            "o.transmissionType," +
+            "o.engineType," +
+            "o.year," +
+            "o.description," +
+            "m.category" +
+            ") " +
+            "FROM Offer o " +
+            "JOIN o.model m " +
+            "JOIN o.seller u " +
+            "JOIN Brand b " +
+            "ON m.brand.id=b.id " +
+            "WHERE o.id=:id")
     OfferFullViewModel getOfferFullInfo(@Param(value = "id") long id);
 }
