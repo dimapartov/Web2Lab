@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offer Details</title>
-</head>
-<body>
 
-<h1>Offer Details</h1>
+<head th:replace="fragments/head"></head>
 
-<div>
-    <img th:src="${offerWithInfo.imageUrl}" alt="Car Image">
-</div>
-
-<div>
-    <p><strong>Price:</strong> <span th:text="${offerWithInfo.price}"></span></p>
-    <p><strong>Seller:</strong> <span th:text="${offerWithInfo.seller}"></span></p>
-    <p><strong>Model:</strong> <span th:text="${offerWithInfo.model}"></span></p>
-    <p><strong>Brand:</strong> <span th:text="${offerWithInfo.brand}"></span></p>
-    <p><strong>Mileage:</strong> <span th:text="${offerWithInfo.mileage}"></span></p>
-    <p><strong>Transmission Type:</strong> <span th:text="${#strings.unCapitalize(offerWithInfo.transmissionType)}"></span></p>
-    <p><strong>Engine Type:</strong> <span th:text="${offerWithInfo.engineType}"></span></p>
-    <p><strong>Year:</strong> <span th:text="${offerWithInfo.year}"></span></p>
-</div>
-
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="fragments/navbar"></div>
+    <main class="flex-shrink-0">
+        <h1>Offer Details</h1>
+        <div>
+            <img th:src="${offerWithInfo.imageUrl}" alt="Car Image">
+        </div>
+        <div>
+            <p><strong>Price:</strong> <span th:text="${offerWithInfo.price}"></span></p>
+            <p><strong>Seller:</strong> <span th:text="${offerWithInfo.seller}"></span></p>
+            <p><strong>Model:</strong> <span th:text="${offerWithInfo.model}"></span></p>
+            <p><strong>Brand:</strong> <span th:text="${offerWithInfo.brand}"></span></p>
+            <p><strong>Mileage:</strong> <span th:text="${offerWithInfo.mileage}"></span></p>
+            <p><strong>Transmission Type:</strong> <span
+                    th:text="${#strings.toLowerCase(offerWithInfo.transmissionType)}"></span></p>
+            <p><strong>Engine Type:</strong> <span th:text="${#strings.toLowerCase(offerWithInfo.engineType)}"></span></p>
+            <p><strong>Year:</strong> <span th:text="${offerWithInfo.year}"></span></p>
+        </div>
+    </main>
+    <footer th:replace="fragments/footer"></footer>
 </body>
+
 </html>
