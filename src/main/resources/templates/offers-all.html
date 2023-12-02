@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head"></head>
 
-<body class="d-flex flex-column h-100">
-    <div th:replace="fragments/navbar">Navbar</div>
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="fragments/navbar"></div>
     <main class="flex-shrink-0">
         <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
-                    <h2 class="text-center text-dark mt-5">Offers</h2>
-                    <div th:each="o : ${allOffers}" class="d-flex flex-column bg-text mb-3">
-                        <h2 th:text="'Brand: ' + ${o.brand}"></h2>
-                        <h4 th:text="'Model: ' + ${o.model}"></h4>
-                        <h4 th:text="'Price: ' + ${o.price}"></h4>
-                        <h4 th:text="'Seller: ' + ${o.seller}"></h4>
-                        <h4><a class="btn-block" th:href="@{/offers/details/{offerId}(offerId=${o.id})}">Detail info</a>
-                        </h4>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card mt-5">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">Offers List</h2>
+                        </div>
+                    </div>
+                    <div class="card-deck mt-3">
+                        <div th:each="o : ${allOffers}" class="card">
+                            <div class="card-body text-center">
+                                <img th:src="${o.imageUrl}" alt="Offer Image" class="card-img-top"
+                                    style="max-height: 200px; object-fit: cover;">
+                                <h5 class="card-title" th:text="${o.brand + ' ' + o.model}"></h5>
+                                <p class="card-text">
+                                    <strong>Price:</strong> <span th:text="${o.price}"></span><br>
+                                    <strong>Seller:</strong> <span th:text="${o.seller}"></span>
+                                </p>
+                                <div>
+                                    <a th:href="@{/offers/details/{offerId}(offerId=${o.id})}"
+                                        class="btn btn-primary">Detail info</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <footer th:replace="fragments/footer"></footer>
+    <footer class="mt-auto" th:replace="fragments/footer"></footer>
 </body>
 
 </html>

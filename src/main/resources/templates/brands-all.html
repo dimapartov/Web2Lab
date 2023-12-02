@@ -7,15 +7,22 @@
     <div th:replace="fragments/navbar"></div>
     <main class="flex-shrink-0">
         <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
-                    <div class='row mb-4 d-flex justify-content-around'>
-                        <div th:each="b : ${allBrands}"
-                            class="col-md-4 d-flex flex-column bg-text mb-3 rounded offer-item" style="margin: 15px;">
-                            <a th:href="@{|/models/by-brand/${b.brandName}|}" class="brand-link">
-                                <h2 th:text="${b.brandName}"></h2>
-                            </a>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card mt-5">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">Brand List</h2>
+                        </div>
+                    </div>
+                    <div class="card-deck mt-3">
+                        <div th:each="b : ${allBrands}" class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" th:text="${b.brandName}"></h5>
+                                <p class="card-text">
+                                    <a th:href="@{|/models/by-brand/${b.brandName}|}" class="btn btn-primary">View
+                                        Models</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -108,47 +108,6 @@ public class OfferServiceImpl implements OfferService {
 
 /*
     @Override
-    public List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage) {
-
-        List<OfferDTO> allOffersByMileageDtoList = offerRepository.findAllByMileageLessThan(mileage)
-                .stream()
-                .map(offer -> modelMapper.map(offer, OfferDTO.class))
-                .toList();
-
-        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
-
-        for (OfferDTO offerDto : allOffersByMileageDtoList) {
-
-            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
-
-            offerDemoView.setModel(offerDto.getModel().getName());
-            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
-            offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOfferDemoViewModel.add(offerDemoView);
-        }
-        return allOfferDemoViewModel;
-    }
-    @Override
-    public List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price) {
-        List<OfferDTO> allOffersByPriceDtoList = offerRepository.findAllByPriceLessThan(price)
-                .stream()
-                .map(offer -> modelMapper.map(offer, OfferDTO.class))
-                .toList();
-
-        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
-
-        for (OfferDTO offerDto : allOffersByPriceDtoList) {
-
-            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
-
-            offerDemoView.setModel(offerDto.getModel().getName());
-            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
-            offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOfferDemoViewModel.add(offerDemoView);
-        }
-        return allOfferDemoViewModel;
-    }
-    @Override
     public List<OfferDemoViewModel> getAllOffersByEngineType(String engineType) {
 
         List<OfferDTO> allOffersByEngineDtoList = offerRepository.findAllByEngineType(EngineTypeEnum.valueOf(engineType.toUpperCase()))

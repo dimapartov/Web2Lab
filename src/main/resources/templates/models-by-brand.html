@@ -4,24 +4,27 @@
 <head th:replace="fragments/head"></head>
 
 <body class="d-flex flex-column min-vh-100">
-    <div th:replace="fragments/navbar">Navbar</div>
-    <header class="bg-primary text-white text-center py-2">
-        <h1 th:text="${allModelsByBrand[0].brandName}"></h1>
-    </header>
+    <div th:replace="fragments/navbar"></div>
     <main class="flex-shrink-0">
         <div class="container">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="jumbotron text-center rounded col-md-8 align-self-center pt-5">
-                    <div class='row mb-4 d-flex justify-content-around'>
-                        <div th:each="m : ${allModelsByBrand}"
-                            class="col-md-4 d-flex flex-column bg-text mb-3 rounded model-item" style="margin: 15px;">
-                            <h4 th:text="${m.modelName}"></h4>
-                            <h4 th:text="${m.category}"></h4>
-                            <h4 th:text=" ${m.startYear} +' - '+ ${m.endYear}"></h4>
-                            <a th:href="@{|/offers/by-model/${m.modelName}|}" class="offer-link">
-                                <h2 th:text="'See offers'"></h2>
-                            </a>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card mt-5">
+                        <div class="card-body text-center">
+                            <h2 class="card-title" th:text="${allModelsByBrand[0].brandName}"></h2>
+                        </div>
+                    </div>
+                    <div class="card-deck mt-3">
+                        <div th:each="m : ${allModelsByBrand}" class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" th:text="${m.modelName}"></h5>
+                                <p class="card-text">
+                                    <strong>Category:</strong> <span
+                                        th:text="${#strings.capitalize(#strings.toLowerCase(m.category))}"></span><br>
+                                    <strong>Years:</strong> <span th:text=" ${m.startYear} +' - '+ ${m.endYear}"></span>
+                                </p>
+                                <a th:href="@{|/offers/by-model/${m.modelName}|}" class="btn btn-primary">See offers</a>
+                            </div>
                         </div>
                     </div>
                 </div>

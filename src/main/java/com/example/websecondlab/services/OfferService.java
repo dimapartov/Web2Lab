@@ -22,8 +22,6 @@ public interface OfferService {
 //    Business
 
 /*
-    List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage);
-    List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
     List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
     List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
 */
