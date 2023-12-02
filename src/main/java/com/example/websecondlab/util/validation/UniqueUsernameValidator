@@ -1,0 +1,17 @@
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
+public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
+
+    private UserRepository userRepository;
+
+    @Autowired
+    public setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public boolean isValid(String name, ConstraintValidatorContext context) {
+        return userRepository.findUserByUsername(name).isEmpty();
+    }
+}

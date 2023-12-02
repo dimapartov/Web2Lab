@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class RegisterViewModel {
 
+    @UniqueUsername
     private String username;
     private String password;
 
@@ -20,14 +21,14 @@ public class RegisterViewModel {
 
 
     @NotNull
-    @NotEmpty
-    @Length(min = 3, message = "Name must contain at least 3 symbols")
+    @NotEmpty(message = "Username cannot be empty")
+    @Length(min = 3, message = "Username must contain at least 3 symbols")
     public String getUsername() {
         return username;
     }
 
     @NotNull
-    @NotEmpty
+    @NotEmpty(message = "Password cannot be empty")
     @Length(min = 5, message = "Password must contain at least 5 symbols")
     public String getPassword() {
         return password;
