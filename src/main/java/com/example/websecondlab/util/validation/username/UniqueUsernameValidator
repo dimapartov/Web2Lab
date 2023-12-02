@@ -1,4 +1,4 @@
-package com.example.websecondlab.util.validation.Username;
+package com.example.websecondlab.util.validation.username;
 
 import com.example.websecondlab.repositories.UserRepository;
 import jakarta.validation.ConstraintValidator;

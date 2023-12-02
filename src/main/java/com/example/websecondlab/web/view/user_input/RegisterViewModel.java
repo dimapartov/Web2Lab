@@ -1,10 +1,13 @@
 package com.example.websecondlab.web.view.user_input;
 
+
+
+import com.example.websecondlab.util.validation.username.UniqueUsername;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import com.example.websecondlab.util.validation.Username.UniqueUsername;
+
 public class RegisterViewModel {
 
     @UniqueUsername

@@ -215,18 +215,18 @@ public class OfferServiceImpl implements OfferService {
         return allOfferDemoViewModel;
     }
 
-    @Override
-    public void createOffer(CreateOfferViewModel newOffer) {
-//        If view model is valid
-        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
-        Model model = modelRepository.findModelByName(newOffer.getModel());
-        User seller = userRepository.findUserByUsername(newOffer.getSeller());
-        newOfferModel.setModel(model);
-        newOfferModel.setSeller(seller);
-        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
-        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
-        offerRepository.saveAndFlush(newOfferModel);
-    }
+//    @Override
+//    public void createOffer(CreateOfferViewModel newOffer) {
+////        If view model is valid
+//        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
+//        Model model = modelRepository.findModelByName(newOffer.getModel());
+//        Optional<User> seller = userRepository.findUserByUsername(newOffer.getSeller());
+//        newOfferModel.setModel(model);
+//        newOfferModel.setSeller(seller);
+//        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
+//        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
+//        offerRepository.saveAndFlush(newOfferModel);
+//    }
 
     @Override
     public List<OfferDemoViewModel> getAllOffersByModel(String modelName) {
