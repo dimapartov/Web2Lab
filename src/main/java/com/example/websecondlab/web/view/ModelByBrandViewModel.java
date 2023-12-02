@@ -8,6 +8,7 @@ public class ModelByBrandViewModel {
     private int startYear;
     private int endYear;
 
+
     public String getBrandName() {
         return brandName;
     }
@@ -24,6 +25,7 @@ public class ModelByBrandViewModel {
         return endYear;
     }
 
+
     public void setBrandName(String brandName) {
         this.brandName = brandName;
     }
@@ -39,6 +41,7 @@ public class ModelByBrandViewModel {
     public void setEndYear(int endYear) {
         this.endYear = endYear;
     }
+
 
     @Override
     public String toString() {

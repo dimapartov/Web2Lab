@@ -1,13 +1,15 @@
 package com.example.websecondlab.web.controllers;
 
+import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.websecondlab.services.OfferService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/offers")
@@ -39,42 +41,27 @@ public class OfferController {
         return "offers-full-info";
     }
 
-//    @GetMapping("/by-mileage")
-//    public String getAllOffersByMileageLowerThan(@RequestParam int mileage, Model model) {
-//        List<OfferDemoViewModel> allOffersByMileageLowerThan = offerService.getAllOffersByMileageLowerThan(mileage);
-//        model.addAttribute("allOffers", allOffersByMileageLowerThan);
-//        allOffersByMileageLowerThan.forEach(System.out::println);
-//        return "all-offers-by-mileage";
-//    }
+/*
+    @GetMapping("/create")
+    public String createOffer() {
+        return "offers-create";
+    }
 
-//    @GetMapping("/by-price")
-//    public String getAllOffersByPriceLowerThan(@RequestParam BigDecimal price, Model model) {
-//        List<OfferDemoViewModel> allOffersByPriceLowerThan = offerService.getAllOffersByPriceLowerThan(price);
-//        model.addAttribute("allOffers", allOffersByPriceLowerThan);
-//        allOffersByPriceLowerThan.forEach(System.out::println);
-//        return "all-offers-by-price";
-//    }
+    @ModelAttribute("newOfferModel")
+    public CreateOfferViewModel initOffer() {
+        return new CreateOfferViewModel();
+    }
 
-//    @GetMapping("/by-engine")
-//    public String getAllOffersByEngineType(@RequestParam String engineType, Model model) {
-//        List<OfferDemoViewModel> allOffersByEngineType = offerService.getAllOffersByEngineType(engineType);
-//        model.addAttribute("allOffers", allOffersByEngineType);
-//        allOffersByEngineType.forEach(System.out::println);
-//        return "all-offers-by-engine";
-//    }
+    @PostMapping("/create")
+    public String createOffer(@Valid CreateOfferViewModel newOfferModel, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("newOfferModel", newOfferModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newOfferModel", bindingResult);
+            return "redirect:/offers/create";
+        }
+        // offerService.createOffer
+        return "redirect:/offers/";
+    }
 
-//    @GetMapping("/by-transmission")
-//    public String getAllOffersByTransmissionType(@RequestParam String transmissionType, Model model) {
-//        List<OfferDemoViewModel> allOffersByTransmissionType = offerService.getAllOffersByTransmissionType(transmissionType);
-//        model.addAttribute("allOffers", allOffersByTransmissionType);
-//        allOffersByTransmissionType.forEach(System.out::println);
-//        return "all-offers-by-transmission";
-//    }
-
-//     @PostMapping("/new")
-//     public String createOffer(@RequestBody CreateOfferViewModel newOffer, Model model) {
-//         offerService.createOffer(newOffer);
-//         model.addAttribute("newOffer", newOffer);
-//         return "offers-create";
-//     }
+ */
 }

@@ -11,53 +11,46 @@ public class OfferDemoViewModel {
     private String model;
     private String brand;
 
+
     public long getId() {
         return id;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getSeller() {
         return seller;
     }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
     public String getModel() {
         return model;
     }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     public String getBrand() {
         return brand;
     }
 
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+    public void setSeller(String seller) {
+        this.seller = seller;
+    }
+    public void setModel(String model) {
+        this.model = model;
+    }
     public void setBrand(String brand) {
         this.brand = brand;
     }
+
 
     @Override
     public String toString() {

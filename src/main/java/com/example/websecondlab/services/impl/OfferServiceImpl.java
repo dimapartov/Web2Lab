@@ -106,28 +106,7 @@ public class OfferServiceImpl implements OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    @Override
-    public List<OfferDemoViewModel> getAllOffers() {
-
-        List<OfferDTO> allOffersDtoList = offerRepository.findAll()
-                .stream()
-                .map(offer -> modelMapper.map(offer, OfferDTO.class))
-                .toList();
-
-        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
-
-        for (OfferDTO offerDto : allOffersDtoList) {
-
-            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
-
-            offerDemoView.setModel(offerDto.getModel().getName());
-            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
-            offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOfferDemoViewModel.add(offerDemoView);
-        }
-        return allOfferDemoViewModel;
-    }
-
+/*
     @Override
     public List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage) {
 
@@ -149,7 +128,6 @@ public class OfferServiceImpl implements OfferService {
         }
         return allOfferDemoViewModel;
     }
-
     @Override
     public List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price) {
         List<OfferDTO> allOffersByPriceDtoList = offerRepository.findAllByPriceLessThan(price)
@@ -170,7 +148,6 @@ public class OfferServiceImpl implements OfferService {
         }
         return allOfferDemoViewModel;
     }
-
     @Override
     public List<OfferDemoViewModel> getAllOffersByEngineType(String engineType) {
 
@@ -192,7 +169,6 @@ public class OfferServiceImpl implements OfferService {
         }
         return allOfferDemoViewModel;
     }
-
     @Override
     public List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType) {
 
@@ -214,19 +190,29 @@ public class OfferServiceImpl implements OfferService {
         }
         return allOfferDemoViewModel;
     }
+*/
 
-//    @Override
-//    public void createOffer(CreateOfferViewModel newOffer) {
-////        If view model is valid
-//        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
-//        Model model = modelRepository.findModelByName(newOffer.getModel());
-//        Optional<User> seller = userRepository.findUserByUsername(newOffer.getSeller());
-//        newOfferModel.setModel(model);
-//        newOfferModel.setSeller(seller);
-//        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
-//        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
-//        offerRepository.saveAndFlush(newOfferModel);
-//    }
+    @Override
+    public List<OfferDemoViewModel> getAllOffers() {
+
+        List<OfferDTO> allOffersDtoList = offerRepository.findAll()
+                .stream()
+                .map(offer -> modelMapper.map(offer, OfferDTO.class))
+                .toList();
+
+        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
+
+        for (OfferDTO offerDto : allOffersDtoList) {
+
+            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
+
+            offerDemoView.setModel(offerDto.getModel().getName());
+            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
+            offerDemoView.setSeller(offerDto.getSeller().getUsername());
+            allOfferDemoViewModel.add(offerDemoView);
+        }
+        return allOfferDemoViewModel;
+    }
 
     @Override
     public List<OfferDemoViewModel> getAllOffersByModel(String modelName) {
@@ -253,4 +239,17 @@ public class OfferServiceImpl implements OfferService {
     public OfferFullViewModel getOfferInfo(long offerId) {
         return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
     }
+
+//    TODO
+//    @Override
+//    public void createOffer(CreateOfferViewModel newOffer) {
+//        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
+//        Model model = modelRepository.findModelByName(newOffer.getModel());
+//        Optional<User> seller = userRepository.findUserByUsername(newOffer.getSeller());
+//        newOfferModel.setModel(model);
+//        newOfferModel.setSeller(seller);
+//        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
+//        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
+//        offerRepository.saveAndFlush(newOfferModel);
+//    }
 }

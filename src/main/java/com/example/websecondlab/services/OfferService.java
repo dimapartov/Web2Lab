@@ -21,13 +21,17 @@ public interface OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
+/*
     List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage);
     List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
     List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
     List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
-//    void createOffer(CreateOfferViewModel newOffer);
+*/
 
     List<OfferDemoViewModel> getAllOffers();
     List<OfferDemoViewModel> getAllOffersByModel(String modelName);
     OfferFullViewModel getOfferInfo(long offerId);
+
+//    TODO
+//    void createOffer(CreateOfferViewModel newOffer);
 }
