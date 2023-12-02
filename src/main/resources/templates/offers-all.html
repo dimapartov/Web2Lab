@@ -16,7 +16,8 @@
                         <h4 th:text="'Model: ' + ${o.model}"></h4>
                         <h4 th:text="'Price: ' + ${o.price}"></h4>
                         <h4 th:text="'Seller: ' + ${o.seller}"></h4>
-                        <h4><a class="btn-block" th:href="@{/offers/details/{offerId}(offerId=${o.id})}">Detail info</a></h4>
+                        <h4><a class="btn-block" th:href="@{/offers/details/{offerId}(offerId=${o.id})}">Detail info</a>
+                        </h4>
                     </div>
                 </div>
             </div>
