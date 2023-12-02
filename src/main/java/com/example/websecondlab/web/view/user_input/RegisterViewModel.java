@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import com.example.websecondlab.util.validation.UniqueUsername;
+import com.example.websecondlab.util.validation.Username.UniqueUsername;
 public class RegisterViewModel {
 
     @UniqueUsername
