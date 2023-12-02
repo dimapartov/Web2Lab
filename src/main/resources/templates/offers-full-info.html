@@ -11,14 +11,13 @@
             <img th:src="${offerWithInfo.imageUrl}" alt="Car Image">
         </div>
         <div>
-            <p><strong>Price:</strong> <span th:text="${offerWithInfo.price}"></span></p>
+            <p><strong>Price:</strong> <span th:text="${offerWithInfo.price}"></span> rub</p>
             <p><strong>Seller:</strong> <span th:text="${offerWithInfo.seller}"></span></p>
             <p><strong>Model:</strong> <span th:text="${offerWithInfo.model}"></span></p>
             <p><strong>Brand:</strong> <span th:text="${offerWithInfo.brand}"></span></p>
-            <p><strong>Mileage:</strong> <span th:text="${offerWithInfo.mileage}"></span></p>
-            <p><strong>Transmission Type:</strong> <span
-                    th:text="${#strings.toLowerCase(offerWithInfo.transmissionType)}"></span></p>
-            <p><strong>Engine Type:</strong> <span th:text="${#strings.toLowerCase(offerWithInfo.engineType)}"></span></p>
+            <p><strong>Mileage:</strong> <span th:text="${offerWithInfo.mileage}"></span> km</p>
+            <p><strong>Transmission Type:</strong> <span th:text="${#strings.capitalize(#strings.toLowerCase(offerWithInfo.transmissionType))}"></span></p>
+            <p><strong>Engine Type:</strong> <span th:text="${#strings.capitalize(#strings.toLowerCase(offerWithInfo.engineType))}"></span></p>
             <p><strong>Year:</strong> <span th:text="${offerWithInfo.year}"></span></p>
         </div>
     </main>
