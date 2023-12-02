@@ -33,6 +33,12 @@ public class OfferController {
         return "offers-all";
     }
 
+    @GetMapping("/full/{offerId}")
+    public String getOfferInfo(@PathVariable long offerId, Model model) {
+        model.addAttribute("offerWithInfo", offerService.getOfferInfo(offerId));
+        return "offers-full-info";
+    }
+
 //    @GetMapping("/by-mileage")
 //    public String getAllOffersByMileageLowerThan(@RequestParam int mileage, Model model) {
 //        List<OfferDemoViewModel> allOffersByMileageLowerThan = offerService.getAllOffersByMileageLowerThan(mileage);

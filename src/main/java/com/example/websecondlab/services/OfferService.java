@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
+import com.example.websecondlab.web.view.OfferFullViewModel;
 import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 
 public interface OfferService {
@@ -20,13 +21,13 @@ public interface OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-//    Display offers
-    List<OfferDemoViewModel> getAllOffers();
     List<OfferDemoViewModel> getAllOffersByMileageLowerThan(int mileage);
     List<OfferDemoViewModel> getAllOffersByPriceLowerThan(BigDecimal price);
     List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
     List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
-    List<OfferDemoViewModel> getAllOffersByModel(String modelName);
-//    Create offer
     void createOffer(CreateOfferViewModel newOffer);
+
+    List<OfferDemoViewModel> getAllOffers();
+    List<OfferDemoViewModel> getAllOffersByModel(String modelName);
+    OfferFullViewModel getOfferInfo(long offerId);
 }

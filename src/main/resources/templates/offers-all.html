@@ -16,10 +16,7 @@
                         <h4 th:text="'Model: ' + ${o.model}"></h4>
                         <h4 th:text="'Price: ' + ${o.price}"></h4>
                         <h4 th:text="'Seller: ' + ${o.seller}"></h4>
-                        <!-- <h4 th:text="'Description: ' + ${#strings.substring(o.description,0,5)}"></h4> -->
-                        <!--                    <h4><a class="btn-block"-->
-                        <!--                           th:href="@{/companies/company-details/{company-name}(company-name=${c.name})}">Detail-->
-                        <!--                        info</a></h4>-->
+                        <h4><a class="btn-block" th:href="@{/offers/full/{offerId}(offerId=${o.id})}">Detail info</a></h4>
                     </div>
                 </div>
             </div>

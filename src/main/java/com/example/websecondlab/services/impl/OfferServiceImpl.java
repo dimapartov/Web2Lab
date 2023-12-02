@@ -3,9 +3,11 @@ package com.example.websecondlab.services.impl;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.example.websecondlab.web.view.OfferDemoViewModel;
+import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -245,5 +247,10 @@ public class OfferServiceImpl implements OfferService {
             allOfferDemoViewModel.add(offerDemoView);
         }
         return allOfferDemoViewModel;
+    }
+
+    @Override
+    public OfferFullViewModel getOfferInfo(long offerId) {
+        return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
     }
 }
