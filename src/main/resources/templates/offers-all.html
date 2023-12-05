@@ -14,6 +14,32 @@
                             <h2 class="card-title">Offers List</h2>
                         </div>
                     </div>
+                    <div class="card mt-5">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">Filter Offers</h2>
+                            <form action="/offers/filtered" method="get">
+                                <div>
+                                    <h4>Engine Types</h4>
+                                    <label><input type="checkbox" name="engineTypes" value="Diesel"> Diesel</label>
+                                    <label><input type="checkbox" name="engineTypes" value="Petrol"> Petrol</label>
+                                    <!-- Add more engine types as needed -->
+                                </div>
+                                <div>
+                                    <h4>Transmission Types</h4>
+                                    <label><input type="checkbox" name="transmissionTypes" value="Manual"> Manual</label>
+                                    <label><input type="checkbox" name="transmissionTypes" value="Automatic"> Automatic</label>
+                                    <!-- Add more transmission types as needed -->
+                                </div>
+                                <div>
+                                    <h4>Car Categories</h4>
+                                    <label><input type="checkbox" name="categories" value="Sedan"> Sedan</label>
+                                    <label><input type="checkbox" name="categories" value="SUV"> SUV</label>
+                                    <!-- Add more categories as needed -->
+                                </div>
+                                <input type="submit" value="Apply filters">
+                            </form>
+                        </div>
+                    </div>
                     <div class="card-deck mt-3">
                         <div th:each="o : ${allOffers}" class="card">
                             <div class="card-body text-center">

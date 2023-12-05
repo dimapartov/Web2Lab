@@ -47,7 +47,6 @@ public class OfferController {
                                     @RequestParam Optional<List<String>> categories,
                                     @RequestParam(required = false) String modelName, Model model) {
 
-//        List<OfferDemoViewModel> result = offerService.getFilteredOffers(engineTypes, transmissionTypes, categories, modelName);
         model.addAttribute("allOffers", offerService.getFilteredOffers(engineTypes, transmissionTypes, categories, modelName));
         return "offers-all";
 
