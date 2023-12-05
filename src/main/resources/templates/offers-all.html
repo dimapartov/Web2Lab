@@ -17,26 +17,27 @@
                     <div class="card mt-5">
                         <div class="card-body text-center">
                             <h2 class="card-title">Filter Offers</h2>
-                            <form action="/offers/filtered" method="get">
-                                <div>
-                                    <h4>Engine Types</h4>
-                                    <label><input type="checkbox" name="engineTypes" value="Diesel"> Diesel</label>
-                                    <label><input type="checkbox" name="engineTypes" value="Petrol"> Petrol</label>
-                                    <!-- Add more engine types as needed -->
+                            <form class="filters-form" th:method="GET" th:action="@{/offers/filtered}">
+                                <div class="filter-box">
+                                    <label th:for="engineType">Engine:</label>
+                                    <div class="filters">
+                                        <input type="checkbox" th:name="engineType" th:text="Gasoline" th:value="GASOLINE" th:checked="${param.engineType != null && param.engineType.contains('GASOLINE')}">
+                                        <input type="checkbox" th:name="engineType" th:text="Diesel" th:value="DIESEL" th:checked="${param.engineType != null && param.engineType.contains('DIESEL')}">
+                                        <input type="checkbox" th:name="engineType" th:text="Electric" th:value="ELECTRIC" th:checked="${param.engineType != null && param.engineType.contains('ELECTRIC')}">
+                                        <input type="checkbox" th:name="engineType" th:text="Hybrid" th:value="HYBRID" th:checked="${param.engineType != null && param.engineType.contains('HYBRID')}">
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4>Transmission Types</h4>
-                                    <label><input type="checkbox" name="transmissionTypes" value="Manual"> Manual</label>
-                                    <label><input type="checkbox" name="transmissionTypes" value="Automatic"> Automatic</label>
-                                    <!-- Add more transmission types as needed -->
+                                <div class="filter-box">
+                                    <label th:for="transmissionType">Transmission:</label>
+                                    <div class="filters">
+                                        <input type="checkbox" th:name="transmissionType" th:text="Manual" th:value="MANUAL" th:checked="${param.transmissionType != null && param.transmissionType.contains('MANUAL')}">
+                                        <input type="checkbox" th:name="transmissionType" th:text="Automatic" th:value="AUTOMATIC" th:checked="${param.transmissionType != null && param.transmissionType.contains('AUTOMATIC')}">
+                                    </div>
+                                    <div class="filters" th:if="${param.modelName != null}">
+                                        <input type="hidden" name="modelName" th:value="${param.modelName}">
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4>Car Categories</h4>
-                                    <label><input type="checkbox" name="categories" value="Sedan"> Sedan</label>
-                                    <label><input type="checkbox" name="categories" value="SUV"> SUV</label>
-                                    <!-- Add more categories as needed -->
-                                </div>
-                                <input type="submit" value="Apply filters">
+                                <button type="submit">Apply</button>
                             </form>
                         </div>
                     </div>
