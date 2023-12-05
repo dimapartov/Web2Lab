@@ -50,6 +50,7 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
 
     @Query("SELECT new com.example.websecondlab.web.view.OfferDemoViewModel" +
             "(" +
+            "o.id, " +
             "o.imageUrl, " +
             "o.price, " +
             "o.seller.username, " +

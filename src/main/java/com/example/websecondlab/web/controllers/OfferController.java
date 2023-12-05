@@ -23,7 +23,7 @@ public class OfferController {
     }
 
 
-    @GetMapping("")
+    @GetMapping("/")
     public String getAllOffers(Model model) {
         model.addAttribute("allOffers", offerService.getAllOffers());
         return "offers-all";

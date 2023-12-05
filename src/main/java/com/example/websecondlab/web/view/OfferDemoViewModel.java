@@ -12,7 +12,8 @@ public class OfferDemoViewModel {
     private String brand;
 
 
-    public OfferDemoViewModel(String imageUrl, BigDecimal price, String seller, String model, String brand) {
+    public OfferDemoViewModel(long id, String imageUrl, BigDecimal price, String seller, String model, String brand) {
+        this.id = id;
         this.imageUrl = imageUrl;
         this.price = price;
         this.seller = seller;

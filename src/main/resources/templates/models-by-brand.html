@@ -23,7 +23,7 @@
                                         th:text="${#strings.capitalize(#strings.toLowerCase(m.category))}"></span><br>
                                     <strong>Years:</strong> <span th:text=" ${m.startYear} +' - '+ ${m.endYear}"></span>
                                 </p>
-                                <a th:href="@{|/offers/by-model/${m.modelName}|}" class="btn btn-primary">See offers</a>
+                                <a th:href="@{|/offers/filtered?modelName=${m.modelName}|}" class="btn btn-primary">See offers</a>
                             </div>
                         </div>
                     </div>
