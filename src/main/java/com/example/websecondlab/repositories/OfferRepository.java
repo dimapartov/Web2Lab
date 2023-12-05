@@ -48,7 +48,7 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     OfferFullViewModel getOfferFullInfo(@Param(value = "id") long id);
 
 
-    @Query("SELECT new com.example.websecondlab.web.view.OfferDemoViewModel" +
+    @Query(value = "SELECT new com.example.websecondlab.web.view.OfferDemoViewModel" +
             "(" +
             "o.id, " +
             "o.imageUrl, " +
