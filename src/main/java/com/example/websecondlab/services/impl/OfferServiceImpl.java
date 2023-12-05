@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.example.websecondlab.consts.enums.CategoryEnum;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.modelmapper.ModelMapper;
@@ -149,6 +150,10 @@ public class OfferServiceImpl implements OfferService {
         }
         return allOfferDemoViewModel;
     }
+    @Override
+    public List<OfferDemoViewModel> getAllOffersByType(String carType) {
+        return null;
+    }
 */
 
     @Override
@@ -197,6 +202,45 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public OfferFullViewModel getOfferInfo(long offerId) {
         return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
+    }
+
+    @Override
+    public List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
+                                                      Optional<List<String>> transmissionTypes,
+                                                      Optional<List<String>> categories,
+                                                      String modelName) {
+
+        List<EngineTypeEnum> engineTypesList = new ArrayList<>();
+        if (engineTypes.isPresent()) {
+            for (String engine : engineTypes.get()) {
+                engineTypesList.add(EngineTypeEnum.valueOf(engine));
+            }
+        }
+        else {
+            engineTypesList = List.of(EngineTypeEnum.values());
+        }
+
+        List<TransmissionTypeEnum> transmissionTypesList = new ArrayList<>();
+        if (transmissionTypes.isPresent()) {
+            for (String transmission : transmissionTypes.get()) {
+                transmissionTypesList.add(TransmissionTypeEnum.valueOf(transmission));
+            }
+        }
+        else {
+            transmissionTypesList = List.of(TransmissionTypeEnum.values());
+        }
+
+        List<CategoryEnum> categoriesList = new ArrayList<>();
+        if (categories.isPresent()) {
+            for (String category : categories.get()) {
+                categoriesList.add(CategoryEnum.valueOf(category));
+            }
+        }
+        else {
+            categoriesList = List.of(CategoryEnum.values());
+        }
+
+        return offerRepository.getFilteredOffers(engineTypesList, transmissionTypesList, categoriesList, modelName);
     }
 
 //    TODO

@@ -1,15 +1,15 @@
 package com.example.websecondlab.web.controllers;
 
-import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
-import jakarta.validation.Valid;
+import com.example.websecondlab.web.view.OfferDemoViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.websecondlab.services.OfferService;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/offers")
@@ -39,6 +39,18 @@ public class OfferController {
     public String getOfferInfo(@PathVariable long offerId, Model model) {
         model.addAttribute("offerWithInfo", offerService.getOfferInfo(offerId));
         return "offers-full-info";
+    }
+
+    @GetMapping("/filtered")
+    public String getFilteredOffers(@RequestParam Optional<List<String>> engineTypes,
+                                    @RequestParam Optional<List<String>> transmissionTypes,
+                                    @RequestParam Optional<List<String>> categories,
+                                    @RequestParam(required = false) String modelName, Model model) {
+
+//        List<OfferDemoViewModel> result = offerService.getFilteredOffers(engineTypes, transmissionTypes, categories, modelName);
+        model.addAttribute("allOffers", offerService.getFilteredOffers(engineTypes, transmissionTypes, categories, modelName));
+        return "offers-all";
+
     }
 
 /*

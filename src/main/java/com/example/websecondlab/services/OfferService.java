@@ -2,6 +2,7 @@ package com.example.websecondlab.services;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
@@ -21,14 +22,18 @@ public interface OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-/*
-    List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
-    List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
-*/
+
+//    List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
+//    List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
+//    List<OfferDemoViewModel> getAllOffersByType(String carType);
 
     List<OfferDemoViewModel> getAllOffers();
     List<OfferDemoViewModel> getAllOffersByModel(String modelName);
     OfferFullViewModel getOfferInfo(long offerId);
+    List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
+                                               Optional<List<String>> transmissionTypes,
+                                               Optional<List<String>> categories,
+                                               String modelName);
 
 //    TODO
 //    void createOffer(CreateOfferViewModel newOffer);

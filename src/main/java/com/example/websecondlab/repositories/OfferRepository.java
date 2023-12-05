@@ -3,6 +3,8 @@ package com.example.websecondlab.repositories;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.example.websecondlab.consts.enums.CategoryEnum;
+import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -44,4 +46,27 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
             "ON m.brand.id=b.id " +
             "WHERE o.id=:id")
     OfferFullViewModel getOfferFullInfo(@Param(value = "id") long id);
+
+
+    @Query("SELECT new com.example.websecondlab.web.view.OfferDemoViewModel" +
+            "(" +
+            "o.imageUrl, " +
+            "o.price, " +
+            "o.seller.username, " +
+            "o.model.name, " +
+            "m.brand.name" +
+            ") " +
+            "FROM Offer o  " +
+            "JOIN o.model m " +
+            "JOIN m.brand b " +
+            "JOIN o.seller u "+
+            "WHERE (o.engineType IN :engineTypes) " +
+            "AND (o.transmissionType IN :transmissionTypes)"  +
+            "AND (m.category IN :categories)"  +
+            "AND (:modelName IS NULL OR m.name = :modelName)"
+    )
+    List<OfferDemoViewModel> getFilteredOffers(@Param("engineTypes") List<EngineTypeEnum> engineTypes,
+                                               @Param("transmissionTypes") List<TransmissionTypeEnum> transmissionTypes,
+                                               @Param("categories") List<CategoryEnum> categories,
+                                               @Param("modelName") String modelName);
 }
