@@ -19,19 +19,28 @@
                             <h2 class="card-title">Filter Offers</h2>
                             <form class="filters-form" th:method="GET" th:action="@{/offers/filtered}">
                                 <div class="filter-box">
-                                    <label th:for="engineType">Engine:</label>
+                                    <label th:for="categories">Categories:</label>
                                     <div class="filters">
-                                        <input type="checkbox" th:name="engineType" th:text="Gasoline" th:value="GASOLINE" th:checked="${param.engineType != null && param.engineType.contains('GASOLINE')}">
-                                        <input type="checkbox" th:name="engineType" th:text="Diesel" th:value="DIESEL" th:checked="${param.engineType != null && param.engineType.contains('DIESEL')}">
-                                        <input type="checkbox" th:name="engineType" th:text="Electric" th:value="ELECTRIC" th:checked="${param.engineType != null && param.engineType.contains('ELECTRIC')}">
-                                        <input type="checkbox" th:name="engineType" th:text="Hybrid" th:value="HYBRID" th:checked="${param.engineType != null && param.engineType.contains('HYBRID')}">
+                                        <input type="checkbox" th:name="categories" th:text="Car" th:value="CAR" th:checked="${param.categories != null && param.categories.contains('CAR')}">
+                                        <input type="checkbox" th:name="categories" th:text="Bus" th:value="BUS" th:checked="${param.categories != null && param.categories.contains('BUS')}">
+                                        <input type="checkbox" th:name="categories" th:text="Truck" th:value="TRUCK" th:checked="${param.categories != null && param.categories.contains('TRUCK')}">
+                                        <input type="checkbox" th:name="categories" th:text="Motorcycle" th:value="MOTORCYCLE" th:checked="${param.categories != null && param.categories.contains('MOTORCYCLE')}">
                                     </div>
                                 </div>
                                 <div class="filter-box">
-                                    <label th:for="transmissionType">Transmission:</label>
+                                    <label th:for="engineType">Engine:</label>
                                     <div class="filters">
-                                        <input type="checkbox" th:name="transmissionType" th:text="Manual" th:value="MANUAL" th:checked="${param.transmissionType != null && param.transmissionType.contains('MANUAL')}">
-                                        <input type="checkbox" th:name="transmissionType" th:text="Automatic" th:value="AUTOMATIC" th:checked="${param.transmissionType != null && param.transmissionType.contains('AUTOMATIC')}">
+                                        <input type="checkbox" th:name="engineTypes" th:text="Gasoline" th:value="GASOLINE" th:checked="${param.engineTypes != null && param.engineTypes.contains('GASOLINE')}">
+                                        <input type="checkbox" th:name="engineTypes" th:text="Diesel" th:value="DIESEL" th:checked="${param.engineTypes != null && param.engineTypes.contains('DIESEL')}">
+                                        <input type="checkbox" th:name="engineTypes" th:text="Electric" th:value="ELECTRIC" th:checked="${param.engineTypes != null && param.engineTypes.contains('ELECTRIC')}">
+                                        <input type="checkbox" th:name="engineTypes" th:text="Hybrid" th:value="HYBRID" th:checked="${param.engineTypes != null && param.engineTypes.contains('HYBRID')}">
+                                    </div>
+                                </div>
+                                <div class="filter-box">
+                                    <label th:for="transmissionTypes">Transmission:</label>
+                                    <div class="filters">
+                                        <input type="checkbox" th:name="transmissionTypes" th:text="Manual" th:value="MANUAL" th:checked="${param.transmissionTypes != null && param.transmissionTypes.contains('MANUAL')}">
+                                        <input type="checkbox" th:name="transmissionTypes" th:text="Automatic" th:value="AUTOMATIC" th:checked="${param.transmissionTypes != null && param.transmissionTypes.contains('AUTOMATIC')}">
                                     </div>
                                     <div class="filters" th:if="${param.modelName != null}">
                                         <input type="hidden" name="modelName" th:value="${param.modelName}">
