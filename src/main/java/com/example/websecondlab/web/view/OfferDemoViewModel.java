@@ -11,6 +11,7 @@ public class OfferDemoViewModel {
     private String model;
     private String brand;
 
+
     public OfferDemoViewModel(String imageUrl, BigDecimal price, String seller, String model, String brand) {
         this.imageUrl = imageUrl;
         this.price = price;
@@ -18,7 +19,8 @@ public class OfferDemoViewModel {
         this.model = model;
         this.brand = brand;
     }
-
+    public OfferDemoViewModel() {
+    }
 
     public long getId() {
         return id;
