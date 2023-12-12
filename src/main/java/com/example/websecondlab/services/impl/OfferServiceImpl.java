@@ -11,13 +11,13 @@ import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.example.websecondlab.consts.enums.EngineTypeEnum;
 import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
-import com.example.websecondlab.models.Model;
 import com.example.websecondlab.models.Offer;
-import com.example.websecondlab.models.User;
 import com.example.websecondlab.repositories.ModelRepository;
 import com.example.websecondlab.repositories.OfferRepository;
 import com.example.websecondlab.repositories.UserRepository;
@@ -107,55 +107,6 @@ public class OfferServiceImpl implements OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-/*
-    @Override
-    public List<OfferDemoViewModel> getAllOffersByEngineType(String engineType) {
-
-        List<OfferDTO> allOffersByEngineDtoList = offerRepository.findAllByEngineType(EngineTypeEnum.valueOf(engineType.toUpperCase()))
-                .stream()
-                .map(offer -> modelMapper.map(offer, OfferDTO.class))
-                .toList();
-
-        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
-
-        for (OfferDTO offerDto : allOffersByEngineDtoList) {
-
-            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
-
-            offerDemoView.setModel(offerDto.getModel().getName());
-            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
-            offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOfferDemoViewModel.add(offerDemoView);
-        }
-        return allOfferDemoViewModel;
-    }
-    @Override
-    public List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType) {
-
-        List<OfferDTO> allOffersByTransmissionDtoList = offerRepository.findAllByTransmissionType(TransmissionTypeEnum.valueOf(transmissionType.toUpperCase()))
-                .stream()
-                .map(offer -> modelMapper.map(offer, OfferDTO.class))
-                .toList();
-
-        List<OfferDemoViewModel> allOfferDemoViewModel = new ArrayList<>();
-
-        for (OfferDTO offerDto : allOffersByTransmissionDtoList) {
-
-            OfferDemoViewModel offerDemoView = modelMapper.map(offerDto, OfferDemoViewModel.class);
-
-            offerDemoView.setModel(offerDto.getModel().getName());
-            offerDemoView.setBrand(offerDto.getModel().getBrand().getName());
-            offerDemoView.setSeller(offerDto.getSeller().getUsername());
-            allOfferDemoViewModel.add(offerDemoView);
-        }
-        return allOfferDemoViewModel;
-    }
-    @Override
-    public List<OfferDemoViewModel> getAllOffersByType(String carType) {
-        return null;
-    }
-*/
-
     @Override
     public List<OfferDemoViewModel> getAllOffers() {
 
@@ -243,16 +194,16 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getFilteredOffers(engineTypesList, transmissionTypesList, categoriesList, modelName);
     }
 
-//    TODO
-//    @Override
-//    public void createOffer(CreateOfferViewModel newOffer) {
-//        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
-//        Model model = modelRepository.findModelByName(newOffer.getModel());
-//        Optional<User> seller = userRepository.findUserByUsername(newOffer.getSeller());
-//        newOfferModel.setModel(model);
-//        newOfferModel.setSeller(seller);
-//        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
-//        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
-//        offerRepository.saveAndFlush(newOfferModel);
-//    }
+    @Override
+    public void createOffer(CreateOfferViewModel newOffer) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        Offer newOfferModel = modelMapper.map(newOffer, Offer.class);
+        newOfferModel.setSeller(userRepository.findByUsername(currentPrincipalName));
+        newOfferModel.setTransmissionType(TransmissionTypeEnum.valueOf(newOffer.getTransmissionType().toUpperCase()));
+        newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
+        newOfferModel.setModel(modelRepository.findModelByName(newOffer.getModelName()));
+        offerRepository.saveAndFlush(newOfferModel);
+    }
 }

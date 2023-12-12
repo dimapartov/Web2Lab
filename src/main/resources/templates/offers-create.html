@@ -1,0 +1,116 @@
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
+</head>
+<body class="d-flex flex-column d-flex ">
+<div th:replace="~{fragments/navbar}"></div>
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <main class="jumbotron text-center rounded col-md-4 align-self-center pt-5 rounded creation">
+                <div class="justify-content-center">
+                    <h1>Offer creation</h1>
+                </div>
+                <form th:action="@{/offers/create}"
+                      th:method="post" th:object="${newOfferModel}"
+                      class="m-md-auto w-50 pb-3">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="brandName">Brand:</label>
+                        <select th:field="*{brandName}" id="brandName" name="brandName" th:onchange="fetchModels()"
+                                class="form-control text-center">
+                            <option th:each="brand : ${brands}" th:value="${brand.name}" th:text="${brand.name}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="modelName">Model</label>
+                        <select th:field="*{modelName}" id="modelName" name="modelName" th:errorclass="is-invalid"
+                                type="text"
+                                class="form-control text-center">
+                        </select>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="engine">Engine</label>
+                        <select th:field="*{engineType}" id="engine" name="engine" class="form-control text-center">
+                            <option th:each="engine : ${engines}" th:value="${engine}" th:text="${engine}"
+                            ></option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="transmission">Transmission</label>
+                        <select th:field="*{transmissionType}" id="transmission" name="transmission"
+                                class="form-control text-center">
+                            <option th:each="transmission : ${transmissions}" th:value="${transmission}"
+                                    th:text="${transmission}"
+                            ></option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label" for="year">Year</label>
+                        <input th:field="*{year}" th:errorclass="is-invalid" type="number" id="year" name="year"
+                               onwheel="return false" class="form-control text-center no-spin" required>
+                        <small th:if="${#fields.hasErrors('year')}" th:errors="*{year}"
+                               class="text-danger">Error message</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="mileage">Mileage</label>
+                        <input th:field="*{mileage}" th:errorclass="is-invalid" type="number" id="mileage"
+                               name="mileage" onwheel="return false" class="form-control text-center no-spin" required>
+                        <small th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}"
+                               class="text-danger">Error message</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="price">Price</label>
+                        <input th:field="*{price}" th:errorclass="is-invalid" type="number" id="price" name="price"
+                               onwheel="return false" class="form-control text-center no-spin" required>
+                        <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+                               class="text-danger">Error message</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea th:field="*{description}" class="form-control" id="description" name="description" style="height: 200px; resize: none;"></textarea>
+                    </div>
+                    <h4>
+                        <button type="submit" class="btnPostOffer">Post</button>
+                    </h4>
+                </form>
+            </main>
+        </div>
+    </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer}"/>
+
+</body>
+</html>
+
+<script>
+    function fetchModels() {
+        var brand = document.getElementById('brandName').value;
+        var modelDropdown = document.getElementById('modelName');
+
+        modelDropdown.innerHTML = '';
+
+        fetch('/models/by-brand-name/' + brand)
+            .then(response => response.json())
+            .then(modelsByBrand => {
+                modelsByBrand.forEach(model => {
+                    var option = document.createElement('option');
+                    option.value = model.modelName;
+                    option.text = model.modelName;
+                    modelDropdown.appendChild(option);
+                });
+            });
+    }
+</script>

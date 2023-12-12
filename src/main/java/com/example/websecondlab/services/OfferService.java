@@ -22,11 +22,6 @@ public interface OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-
-//    List<OfferDemoViewModel> getAllOffersByEngineType(String engineType);
-//    List<OfferDemoViewModel> getAllOffersByTransmissionType(String transmissionType);
-//    List<OfferDemoViewModel> getAllOffersByType(String carType);
-
     List<OfferDemoViewModel> getAllOffers();
     List<OfferDemoViewModel> getAllOffersByModel(String modelName);
     OfferFullViewModel getOfferInfo(long offerId);
@@ -35,6 +30,5 @@ public interface OfferService {
                                                Optional<List<String>> categories,
                                                String modelName);
 
-//    TODO
-//    void createOffer(CreateOfferViewModel newOffer);
+    void createOffer(CreateOfferViewModel newOffer);
 }

@@ -1,12 +1,19 @@
 package com.example.websecondlab.web.controllers;
 
+import com.example.websecondlab.consts.enums.EngineTypeEnum;
+import com.example.websecondlab.consts.enums.TransmissionTypeEnum;
+import com.example.websecondlab.services.BrandService;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
+import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.websecondlab.services.OfferService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,10 +23,15 @@ import java.util.Optional;
 public class OfferController {
 
     private OfferService offerService;
+    private BrandService brandService;
 
     @Autowired
     public void setOfferService(OfferService offerService) {
         this.offerService = offerService;
+    }
+    @Autowired
+    public void setBrandService(BrandService brandService) {
+        this.brandService = brandService;
     }
 
 
@@ -52,9 +64,12 @@ public class OfferController {
 
     }
 
-/*
+
     @GetMapping("/create")
-    public String createOffer() {
+    public String createOffer(Model model) {
+        model.addAttribute("brands", brandService.getAll());
+        model.addAttribute("transmissions", List.of(TransmissionTypeEnum.values()));
+        model.addAttribute("engines", List.of(EngineTypeEnum.values()));
         return "offers-create";
     }
 
@@ -70,9 +85,9 @@ public class OfferController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newOfferModel", bindingResult);
             return "redirect:/offers/create";
         }
-        // offerService.createOffer
+         offerService.createOffer(newOfferModel);
         return "redirect:/offers/";
     }
 
- */
+
 }

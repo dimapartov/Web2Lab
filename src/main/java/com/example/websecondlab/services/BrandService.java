@@ -13,4 +13,5 @@ public interface BrandService {
 //    Business
 
     List<BrandViewModel> getAllBrands();
+    List<BrandDTO> getAll();
 }

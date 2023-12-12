@@ -53,4 +53,11 @@ public class BrandServiceImpl implements BrandService {
                 .toList();
         return allBrands;
     }
+
+    public List<BrandDTO> getAll() {
+        return brandRepository.findAll()
+                .stream()
+                .map(brand -> modelMapper.map(brand, BrandDTO.class))
+                .toList();
+    }
 }
