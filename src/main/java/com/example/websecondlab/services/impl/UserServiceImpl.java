@@ -73,24 +73,6 @@ public class UserServiceImpl implements UserService {
 //    Business
 
     @Override
-    public void registerUser(RegisterViewModel newUser) {
-
-        if (!this.validation.isValid(newUser)) {
-            this.validation
-                    .violations(newUser)
-                    .stream()
-                    .map(ConstraintViolation::getMessage)
-                    .forEach(System.out::println);
-            throw new IllegalArgumentException("Illegal argument");
-        } else {
-            User newUserModel = modelMapper.map(newUser, User.class);
-            newUserModel.setRole(roleRepository.findRoleByRole(USER));
-            newUserModel.setActive(true);
-            userRepository.saveAndFlush(newUserModel);
-        }
-    }
-
-    @Override
     @Transactional
     public void deleteUserByUserName(String username) {
         userRepository.deleteUserByUsername(username);

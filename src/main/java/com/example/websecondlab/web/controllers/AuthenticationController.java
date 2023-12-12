@@ -1,6 +1,8 @@
 package com.example.websecondlab.web.controllers;
 
+import com.example.websecondlab.services.impl.security.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,22 +11,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.websecondlab.services.UserService;
 import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class AuthenticationController {
 
-    private UserService userService;
+    private AuthenticationService authenticationService;
 
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setAuthenticationService(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
     }
 
+
+    @GetMapping("/login")
+    public String loginUser() {
+        return "users-login";
+    }
+    @PostMapping("/login-error")
+    public String onFailedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("badCredentials", true);
+        return "redirect:/users/login";
+    }
 
     @GetMapping("/register")
     public String registerUser() {
@@ -43,14 +55,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newUser", bindingResult);
             return "redirect:/users/register";
         }
-        userService.registerUser(newUser);
-        return "redirect:/";
+        authenticationService.registerUser(newUser);
+        return "redirect:/users/login";
     }
-
-    // @DeleteMapping("/delete")
-    // public String deleteUser(@RequestParam String username) {
-    //     userService.deleteUserByUserName(username);
-    //     return "redirect:/register";
-    // }
-
 }

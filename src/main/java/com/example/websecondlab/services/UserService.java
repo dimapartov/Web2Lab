@@ -13,7 +13,6 @@ public interface UserService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    void registerUser(RegisterViewModel newUser);
     void deleteUserByUserName(String username);
 
 }
