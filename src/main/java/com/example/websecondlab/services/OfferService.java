@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.websecondlab.models.Model;
 import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
@@ -31,4 +32,5 @@ public interface OfferService {
                                                String modelName);
 
     void createOffer(CreateOfferViewModel newOffer);
+    List<OfferDemoViewModel> getTop10CheapestOffersForModel();
 }

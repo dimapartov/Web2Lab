@@ -89,5 +89,10 @@ public class OfferController {
         return "redirect:/offers/";
     }
 
+    @GetMapping("/top-10-cheapest-by-model")
+    public String getTop10CheapestOffersForModel(Model model) {
+        model.addAttribute("allOffers", offerService.getTop10CheapestOffersForModel());
+        return "offers-all";
+    }
 
 }

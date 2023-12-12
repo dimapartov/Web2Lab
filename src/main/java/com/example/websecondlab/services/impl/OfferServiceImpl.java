@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.example.websecondlab.consts.enums.CategoryEnum;
+import com.example.websecondlab.models.Model;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.modelmapper.ModelMapper;
@@ -205,5 +206,12 @@ public class OfferServiceImpl implements OfferService {
         newOfferModel.setEngineType(EngineTypeEnum.valueOf(newOffer.getEngineType().toUpperCase()));
         newOfferModel.setModel(modelRepository.findModelByName(newOffer.getModelName()));
         offerRepository.saveAndFlush(newOfferModel);
+    }
+
+    @Override
+    public List<OfferDemoViewModel> getTop10CheapestOffersForModel() {
+        Model model = offerRepository.getMostCommonModel();
+        List<OfferDemoViewModel> offers = offerRepository.getTop10CheapestOffersForModel(model);
+        return offers;
     }
 }

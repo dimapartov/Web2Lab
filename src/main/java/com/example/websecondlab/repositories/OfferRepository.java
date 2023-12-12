@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.websecondlab.consts.enums.CategoryEnum;
+import com.example.websecondlab.models.Model;
 import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -70,4 +71,30 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
                                                @Param("transmissionTypes") List<TransmissionTypeEnum> transmissionTypes,
                                                @Param("categories") List<CategoryEnum> categories,
                                                @Param("modelName") String modelName);
+
+
+    @Query(value = "SELECT o.model " +
+            "FROM Offer o " +
+            "GROUP BY o.model " +
+            "ORDER BY COUNT(o.model) DESC " +
+            "LIMIT 1")
+    Model getMostCommonModel();
+
+    @Query(value = "SELECT new com.example.websecondlab.web.view.OfferDemoViewModel" +
+            "(" +
+            "o.id, " +
+            "o.imageUrl, " +
+            "o.price, " +
+            "o.seller.username, " +
+            "o.model.name, " +
+            "m.brand.name" +
+            ") " +
+            "FROM Offer o  " +
+            "JOIN o.model m " +
+            "JOIN m.brand b " +
+            "JOIN o.seller u "+
+            "WHERE o.model = :model " +
+            "ORDER BY o.price ASC " +
+            "LIMIT 10")
+    List<OfferDemoViewModel> getTop10CheapestOffersForModel(@Param("model") Model model);
 }
