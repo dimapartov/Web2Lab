@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import com.example.websecondlab.models.Brand;
@@ -15,6 +17,7 @@ import com.example.websecondlab.web.view.BrandViewModel;
 import jakarta.transaction.Transactional;
 
 @Service
+@EnableCaching
 public class BrandServiceImpl implements BrandService {
 
     private final ModelMapper modelMapper;
@@ -45,6 +48,7 @@ public class BrandServiceImpl implements BrandService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
+    @Cacheable(value = "brands", key = "#root.methodName")
     @Override
     public List<BrandViewModel> getAllBrands() {
         List<BrandViewModel> allBrands = brandRepository.findAll()
@@ -54,6 +58,7 @@ public class BrandServiceImpl implements BrandService {
         return allBrands;
     }
 
+    @Override
     public List<BrandDTO> getAll() {
         return brandRepository.findAll()
                 .stream()

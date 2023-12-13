@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import com.example.websecondlab.consts.enums.CategoryEnum;
@@ -15,6 +17,7 @@ import com.example.websecondlab.services.dtos.ModelDTO;
 import com.example.websecondlab.web.view.ModelByBrandViewModel;
 
 @Service
+@EnableCaching
 public class ModelServiceImpl implements ModelService {
 
     private final ModelMapper modelMapper;
@@ -67,7 +70,7 @@ public class ModelServiceImpl implements ModelService {
     }
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
-
+    @Cacheable(value = "models", key = "#root.methodName")
     @Override
     public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {
         List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllByBrandName(brandName)

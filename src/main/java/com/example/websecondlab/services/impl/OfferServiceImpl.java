@@ -12,6 +12,9 @@ import com.example.websecondlab.web.view.OfferDemoViewModel;
 import com.example.websecondlab.web.view.OfferFullViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,7 @@ import com.example.websecondlab.services.dtos.OfferDTO;
 import com.example.websecondlab.web.view.user_input.CreateOfferViewModel;
 
 @Service
+@EnableCaching
 public class OfferServiceImpl implements OfferService {
 
     private final ModelMapper modelMapper;
@@ -108,6 +112,7 @@ public class OfferServiceImpl implements OfferService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
+    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public List<OfferDemoViewModel> getAllOffers() {
 
@@ -130,6 +135,7 @@ public class OfferServiceImpl implements OfferService {
         return allOfferDemoViewModel;
     }
 
+    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public List<OfferDemoViewModel> getAllOffersByModel(String modelName) {
         List<OfferDTO> allOffersDtoList = offerRepository.findAllByModelName(modelName)
@@ -151,11 +157,13 @@ public class OfferServiceImpl implements OfferService {
         return allOfferDemoViewModel;
     }
 
+    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public OfferFullViewModel getOfferInfo(long offerId) {
         return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
     }
 
+    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
                                                       Optional<List<String>> transmissionTypes,
@@ -195,6 +203,7 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getFilteredOffers(engineTypesList, transmissionTypesList, categoriesList, modelName);
     }
 
+    @CacheEvict(cacheNames = "createOffer", allEntries = true)
     @Override
     public void createOffer(CreateOfferViewModel newOffer) {
 
@@ -208,6 +217,7 @@ public class OfferServiceImpl implements OfferService {
         offerRepository.saveAndFlush(newOfferModel);
     }
 
+    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public List<OfferDemoViewModel> getTop10CheapestOffersForModel() {
         Model model = offerRepository.getMostCommonModel();

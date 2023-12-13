@@ -1,6 +1,9 @@
 package com.example.websecondlab.web.controllers;
 
 import com.example.websecondlab.web.view.ModelByBrandViewModel;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,8 @@ public class ModelController {
 
     private ModelService modelService;
 
+    private static final Logger LOG = LogManager.getLogger(Controller.class);
+
     @Autowired
     public void setModelService(ModelService modelService) {
         this.modelService = modelService;
@@ -27,6 +32,7 @@ public class ModelController {
 
     @GetMapping("/by-brand/{brandName}")
     public String getAllModelsByBrand(@PathVariable String brandName, Model model) {
+        LOG.log(Level.INFO, "Show models by brand");
         model.addAttribute("allModelsByBrand", modelService.getAllModelsByBrand(brandName));
         return "models-by-brand";
     }
