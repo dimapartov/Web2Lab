@@ -34,7 +34,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
 
-    @Override
+    /*@Override
     public BrandDTO addBrand(BrandDTO brandDTO) {
         Brand brand = modelMapper.map(brandDTO, Brand.class);
         return modelMapper.map(brandRepository.saveAndFlush(brand), BrandDTO.class);
@@ -44,19 +44,27 @@ public class BrandServiceImpl implements BrandService {
     @Transactional
     public void deleteBrandByName(String name) {
         brandRepository.deleteBrandByName(name);
-    }
+    }*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
+//    @Cacheable(value = "brands", key = "#root.methodName")
+//    @Override
+//    public List<BrandViewModel> getAllBrands() {
+//        List<BrandViewModel> allBrands = brandRepository.findAll()
+//                .stream()
+//                .map(brand -> modelMapper.map(brand, BrandViewModel.class))
+//                .toList();
+//        return allBrands;
+//    }
 
     @Cacheable(value = "brands", key = "#root.methodName")
     @Override
     public List<BrandViewModel> getAllBrands() {
-        List<BrandViewModel> allBrands = brandRepository.findAll()
-                .stream()
-                .map(brand -> modelMapper.map(brand, BrandViewModel.class))
-                .toList();
-        return allBrands;
+        return brandRepository.getAllBrands();
     }
+
 
     @Override
     public List<BrandDTO> getAll() {

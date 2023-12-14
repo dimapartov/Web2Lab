@@ -75,7 +75,6 @@ public class OfferController {
         LOG.log(Level.INFO, "Show all offers with filters: " + engineTypes + " " + transmissionTypes + " " + categories + " " + modelName);
         model.addAttribute("allOffers", offerService.getFilteredOffers(engineTypes, transmissionTypes, categories, modelName));
         return "offers-all";
-
     }
 
 
@@ -86,12 +85,10 @@ public class OfferController {
         model.addAttribute("engines", List.of(EngineTypeEnum.values()));
         return "offers-create";
     }
-
     @ModelAttribute("newOfferModel")
     public CreateOfferViewModel initOffer() {
         return new CreateOfferViewModel();
     }
-
     @PostMapping("/create")
     public String createOffer(@Valid CreateOfferViewModel newOfferModel, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         LOG.log(Level.INFO, "Create offer by" + newOfferModel.getSeller());
@@ -100,7 +97,7 @@ public class OfferController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newOfferModel", bindingResult);
             return "redirect:/offers/create";
         }
-         offerService.createOffer(newOfferModel);
+        offerService.createOffer(newOfferModel);
         return "redirect:/offers/";
     }
 

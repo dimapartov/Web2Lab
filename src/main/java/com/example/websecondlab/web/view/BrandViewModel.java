@@ -2,23 +2,29 @@ package com.example.websecondlab.web.view;
 
 public class BrandViewModel {
 
-    private String brandName;
+    private String name;
 
+    public BrandViewModel(String name) {
+        this.name = name;
+    }
 
-    public String getBrandName() {
-        return brandName;
+    public BrandViewModel() {
+    }
+
+    public String getName() {
+        return name;
     }
 
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
     @Override
     public String toString() {
         return "BrandViewModel{" +
-                "brandName='" + brandName + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 }

@@ -2,18 +2,28 @@ package com.example.websecondlab.web.view;
 
 public class ModelByBrandViewModel {
 
-    private String brandName;
-    private String modelName;
+    private String brand;
+    private String name;
     private String category;
     private int startYear;
     private int endYear;
 
-
-    public String getBrandName() {
-        return brandName;
+    public ModelByBrandViewModel(String brand, String name, String category, int startYear, int endYear) {
+        this.brand = brand;
+        this.name = name;
+        this.category = category;
+        this.startYear = startYear;
+        this.endYear = endYear;
     }
-    public String getModelName() {
-        return modelName;
+
+    public ModelByBrandViewModel() {
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+    public String getName() {
+        return name;
     }
     public String getCategory() {
         return category;
@@ -26,11 +36,11 @@ public class ModelByBrandViewModel {
     }
 
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
+    public void setName(String name) {
+        this.name = name;
     }
     public void setCategory(String category) {
         this.category = category;
@@ -46,8 +56,8 @@ public class ModelByBrandViewModel {
     @Override
     public String toString() {
         return "ModelByBrandViewModel{" +
-                "brandName='" + brandName + '\'' +
-                ", modelName='" + modelName + '\'' +
+                "brand='" + brand + '\'' +
+                ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", startYear=" + startYear +
                 ", endYear=" + endYear +

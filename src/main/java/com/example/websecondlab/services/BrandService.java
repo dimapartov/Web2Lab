@@ -7,8 +7,10 @@ import com.example.websecondlab.web.view.BrandViewModel;
 
 public interface BrandService {
 
-    BrandDTO addBrand(BrandDTO brandDTO);
-    void deleteBrandByName(String name);
+    /*BrandDTO addBrand(BrandDTO brandDTO);
+    void deleteBrandByName(String name);*/
+
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 

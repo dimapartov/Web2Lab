@@ -37,6 +37,8 @@ public class OfferFullViewModel {
         this.category = category;
     }
 
+    public OfferFullViewModel() {
+    }
 
     public String getImageUrl() {
         return imageUrl;

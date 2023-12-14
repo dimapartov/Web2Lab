@@ -16,6 +16,7 @@ import com.example.websecondlab.services.BrandService;
 public class BrandController {
 
     private BrandService brandService;
+
     private static final Logger LOG = LogManager.getLogger(Controller.class);
 
     @Autowired

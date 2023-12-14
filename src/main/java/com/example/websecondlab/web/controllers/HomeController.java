@@ -11,6 +11,7 @@ public class HomeController {
 
     private static final Logger LOG = LogManager.getLogger(Controller.class);
 
+
     @GetMapping("/")
     public String homePage() {
         LOG.log(Level.INFO, "Show home page");

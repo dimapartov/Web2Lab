@@ -59,7 +59,7 @@ public class OfferServiceImpl implements OfferService {
     }
 
 
-    @Override
+    /*@Override
     public void addOffer(OfferDTO offerDTO) {
         Offer offer = modelMapper.map(offerDTO, Offer.class);
         offerRepository.saveAndFlush(offer);
@@ -108,7 +108,8 @@ public class OfferServiceImpl implements OfferService {
                 .stream()
                 .map(offer -> modelMapper.map(offer, OfferDTO.class))
                 .collect(Collectors.toList());
-    }
+    }*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
@@ -157,13 +158,12 @@ public class OfferServiceImpl implements OfferService {
         return allOfferDemoViewModel;
     }
 
-    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public OfferFullViewModel getOfferInfo(long offerId) {
         return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
     }
 
-    @Cacheable(value = "offers", key = "#root.methodName")
+    @CacheEvict(cacheNames = {"offers"}, allEntries = true)
     @Override
     public List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
                                                       Optional<List<String>> transmissionTypes,
@@ -203,10 +203,9 @@ public class OfferServiceImpl implements OfferService {
         return offerRepository.getFilteredOffers(engineTypesList, transmissionTypesList, categoriesList, modelName);
     }
 
-    @CacheEvict(cacheNames = "createOffer", allEntries = true)
+    @CacheEvict(cacheNames = {"offers"}, allEntries = true)
     @Override
     public void createOffer(CreateOfferViewModel newOffer) {
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         Offer newOfferModel = modelMapper.map(newOffer, Offer.class);

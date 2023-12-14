@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
+    /*@Override
     public void addUser(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         userRepository.saveAndFlush(user);
@@ -68,7 +68,8 @@ public class UserServiceImpl implements UserService {
                     .collect(Collectors.toList());
         }
         return usersByRole;
-    }
+    }*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 

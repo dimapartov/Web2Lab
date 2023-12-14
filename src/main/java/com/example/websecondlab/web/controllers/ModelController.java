@@ -32,7 +32,7 @@ public class ModelController {
 
     @GetMapping("/by-brand/{brandName}")
     public String getAllModelsByBrand(@PathVariable String brandName, Model model) {
-        LOG.log(Level.INFO, "Show models by brand");
+        LOG.log(Level.INFO, "Show models by brand: " + brandName);
         model.addAttribute("allModelsByBrand", modelService.getAllModelsByBrand(brandName));
         return "models-by-brand";
     }

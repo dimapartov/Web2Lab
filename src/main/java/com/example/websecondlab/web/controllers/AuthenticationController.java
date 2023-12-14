@@ -23,6 +23,8 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
 
     private AuthenticationService authenticationService;
+
+//    private static final Logger LOG = LogManager.getLogger(Controller.class);
     private static final Logger LOG = LogManager.getLogger(Controller.class);
 
     @Autowired
@@ -46,12 +48,10 @@ public class AuthenticationController {
     public String registerUser() {
         return "users-register";
     }
-
     @ModelAttribute("newUser")
     public RegisterViewModel initUser() {
         return new RegisterViewModel();
     }
-
     @PostMapping("/register")
     public String registerUser(@Valid RegisterViewModel newUser, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         LOG.log(Level.INFO, "Register " + newUser.getUsername());

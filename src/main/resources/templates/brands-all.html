@@ -17,9 +17,9 @@
                     <div class="card-deck mt-3">
                         <div th:each="b : ${allBrands}" class="card">
                             <div class="card-body text-center">
-                                <h5 class="card-title" th:text="${b.brandName}"></h5>
+                                <h5 class="card-title" th:text="${b.name}"></h5>
                                 <p class="card-text">
-                                    <a th:href="@{|/models/by-brand/${b.brandName}|}" class="btn btn-primary">View
+                                    <a th:href="@{|/models/by-brand/${b.name}|}" class="btn btn-primary">View
                                         Models</a>
                                 </p>
                             </div>

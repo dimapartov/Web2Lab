@@ -22,12 +22,14 @@ public class AuthenticationService {
     private PasswordEncoder passwordEncoder;
     private RoleRepository roleRepository;
 
+
     public AuthenticationService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
+
 
     public void registerUser(RegisterViewModel newUser) {
 

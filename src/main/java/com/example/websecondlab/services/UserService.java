@@ -7,9 +7,9 @@ import com.example.websecondlab.web.view.user_input.RegisterViewModel;
 
 public interface UserService {
 
-    void addUser(UserDTO userDTO);
+    /*void addUser(UserDTO userDTO);
 
-    List<UserDTO> getUsersByRole(String role);
+    List<UserDTO> getUsersByRole(String role);*/
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 

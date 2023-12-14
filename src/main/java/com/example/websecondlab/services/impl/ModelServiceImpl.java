@@ -34,7 +34,7 @@ public class ModelServiceImpl implements ModelService {
     }
 
 
-    @Override
+    /*@Override
     public void addModel(ModelDTO modelDTO) {
         Model model = modelMapper.map(modelDTO, Model.class);
         modelRepository.saveAndFlush(model);
@@ -67,9 +67,11 @@ public class ModelServiceImpl implements ModelService {
                 .stream()
                 .map(model -> modelMapper.map(model, ModelDTO.class))
                 .collect(Collectors.toList());
-    }
+    }*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
+
     @Cacheable(value = "models", key = "#root.methodName")
     @Override
     public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {

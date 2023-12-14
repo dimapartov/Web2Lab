@@ -23,6 +23,7 @@ public class RedisConfiguration {
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
+
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(redisHost, redisPort);
 
         return new LettuceConnectionFactory(configuration);
@@ -34,8 +35,9 @@ public class RedisConfiguration {
 
         return RedisCacheManager.builder(redisConnectionFactory())
                 .cacheDefaults(cacheConfig)
-                .withCacheConfiguration("companies", myDefaultCacheConfig(Duration.ofMinutes(10)))
-                .withCacheConfiguration("employees", myDefaultCacheConfig(Duration.ofMinutes(10)))
+                .withCacheConfiguration("offers", myDefaultCacheConfig(Duration.ofMinutes(10)))
+                .withCacheConfiguration("models", myDefaultCacheConfig(Duration.ofMinutes(10)))
+                .withCacheConfiguration("brands", myDefaultCacheConfig(Duration.ofMinutes(10)))
                 .build();
     }
 

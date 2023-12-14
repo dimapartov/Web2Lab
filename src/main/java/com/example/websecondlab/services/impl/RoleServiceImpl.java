@@ -29,7 +29,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
 
-    @Override
+    /*@Override
     public void addRole(RoleDTO roleDTO) {
         Role role = modelMapper.map(roleDTO, Role.class);
         roleRepository.saveAndFlush(role);
@@ -41,7 +41,8 @@ public class RoleServiceImpl implements RoleService {
                 .stream()
                 .map(role -> modelMapper.map(role, RoleDTO.class))
                 .collect(Collectors.toList());
-    }
+    }*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 

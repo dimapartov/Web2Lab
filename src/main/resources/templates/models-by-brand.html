@@ -11,19 +11,19 @@
                 <div class="col-md-8">
                     <div class="card mt-5">
                         <div class="card-body text-center">
-                            <h2 class="card-title" th:text="${allModelsByBrand[0].brandName}"></h2>
+                            <h2 class="card-title" th:text="${allModelsByBrand[0].brand}"></h2>
                         </div>
                     </div>
                     <div class="card-deck mt-3">
                         <div th:each="m : ${allModelsByBrand}" class="card">
                             <div class="card-body text-center">
-                                <h5 class="card-title" th:text="${m.modelName}"></h5>
+                                <h5 class="card-title" th:text="${m.name}"></h5>
                                 <p class="card-text">
                                     <strong>Category:</strong> <span
                                         th:text="${#strings.capitalize(#strings.toLowerCase(m.category))}"></span><br>
                                     <strong>Years:</strong> <span th:text=" ${m.startYear} +' - '+ ${m.endYear}"></span>
                                 </p>
-                                <a th:href="@{|/offers/filtered?modelName=${m.modelName}|}" class="btn btn-primary">See offers</a>
+                                <a th:href="@{|/offers/filtered?modelName=${m.name}|}" class="btn btn-primary">See offers</a>
                             </div>
                         </div>
                     </div>
