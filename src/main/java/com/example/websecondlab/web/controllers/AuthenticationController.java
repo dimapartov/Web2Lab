@@ -24,7 +24,6 @@ public class AuthenticationController {
 
     private AuthenticationService authenticationService;
 
-//    private static final Logger LOG = LogManager.getLogger(Controller.class);
     private static final Logger LOG = LogManager.getLogger(Controller.class);
 
     @Autowired
