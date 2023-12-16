@@ -52,7 +52,7 @@ public class OfferController {
         return "offers-all";
     }
 
-    @GetMapping("/by-model/{modelName}")
+/*    @GetMapping("/by-model/{modelName}")
     public String getAllOffersByModel(@PathVariable String modelName, Model model) {
         LOG.log(Level.INFO, "Show offers by model: " + modelName);
         StopWatch stopWatch = new StopWatch();
@@ -61,7 +61,7 @@ public class OfferController {
         stopWatch.stop();
         System.out.println(stopWatch.getTotalTimeMillis());
         return "offers-all";
-    }
+    }*/
 
     @GetMapping("/details/{offerId}")
     public String getOfferInfo(@PathVariable long offerId, Model model) {

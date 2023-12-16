@@ -136,7 +136,7 @@ public class OfferServiceImpl implements OfferService {
         return allOfferDemoViewModel;
     }
 
-    @Cacheable(value = "offers", key = "#root.methodName")
+/*    @Cacheable(value = "offers", key = "#root.methodName")
     @Override
     public List<OfferDemoViewModel> getAllOffersByModel(String modelName) {
         List<OfferDTO> allOffersDtoList = offerRepository.findAllByModelName(modelName)
@@ -156,7 +156,7 @@ public class OfferServiceImpl implements OfferService {
             allOfferDemoViewModel.add(offerDemoView);
         }
         return allOfferDemoViewModel;
-    }
+    }*/
 
     @Override
     public OfferFullViewModel getOfferInfo(long offerId) {

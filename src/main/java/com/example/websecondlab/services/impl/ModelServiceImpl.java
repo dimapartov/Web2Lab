@@ -72,7 +72,7 @@ public class ModelServiceImpl implements ModelService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    @Cacheable(value = "models", key = "#root.methodName")
+    @Cacheable(value = "models", key = "#root.methodName + '_' + #brandName")
     @Override
     public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {
         List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllModelsByBrandName(brandName);

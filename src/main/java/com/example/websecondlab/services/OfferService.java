@@ -24,7 +24,7 @@ public interface OfferService {
 //    Business
 
     List<OfferDemoViewModel> getAllOffers();
-    List<OfferDemoViewModel> getAllOffersByModel(String modelName);
+/*    List<OfferDemoViewModel> getAllOffersByModel(String modelName);*/
     OfferFullViewModel getOfferInfo(long offerId);
     List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
                                                Optional<List<String>> transmissionTypes,
