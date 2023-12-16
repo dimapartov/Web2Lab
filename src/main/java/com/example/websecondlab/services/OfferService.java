@@ -14,12 +14,12 @@ public interface OfferService {
 
     /*void addOffer(OfferDTO offerDTO);
     void deleteOfferById(long id);
-
     List<OfferDTO> getOffersByMileageLowerThan(int mileage);
     List<OfferDTO> getOffersByPriceLowerThan(BigDecimal price);
     List<OfferDTO> getOffersByEngineType(String engineType);
     List<OfferDTO> getOffersByTransmissionType(String transmissionType);
     List<OfferDTO> getOffersBySeller(String username);*/
+
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
