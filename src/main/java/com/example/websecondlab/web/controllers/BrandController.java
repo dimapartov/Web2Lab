@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,7 +29,11 @@ public class BrandController {
     @GetMapping("/")
     public String getAllBrands(Model model) {
         LOG.log(Level.INFO, "Show all brands");
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         model.addAttribute("allBrands", brandService.getAllBrands());
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
         return "brands-all";
     }
 }

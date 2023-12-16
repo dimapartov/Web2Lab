@@ -72,13 +72,19 @@ public class ModelServiceImpl implements ModelService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
+//    @Cacheable(value = "models", key = "#root.methodName")
+//    @Override
+//    public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {
+//        List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllByBrandName(brandName)
+//                .stream()
+//                .map(model -> modelMapper.map(model, ModelByBrandViewModel.class))
+//                .toList();
+//        return  modelsByBrand;
+//    }
     @Cacheable(value = "models", key = "#root.methodName")
     @Override
     public List<ModelByBrandViewModel> getAllModelsByBrand(String brandName) {
-        List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllByBrandName(brandName)
-                .stream()
-                .map(model -> modelMapper.map(model, ModelByBrandViewModel.class))
-                .toList();
+        List<ModelByBrandViewModel> modelsByBrand = modelRepository.findAllModelsByBrandName(brandName);
         return  modelsByBrand;
     }
 }

@@ -16,6 +16,7 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
     void deleteBrandByName(String name);
 
+
     @Query(value = "SELECT new com.example.websecondlab.web.view.BrandViewModel(b.name) FROM Brand b")
     List<BrandViewModel> getAllBrands();
 }

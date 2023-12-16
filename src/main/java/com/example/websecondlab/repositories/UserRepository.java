@@ -13,10 +13,9 @@ import com.example.websecondlab.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     void deleteUserByUsername(String username);
-
     List<User> findAllByRole_RoleEquals(RoleEnum role);
+
 
     Optional<User> findUserByUsername(String username);
     User findByUsername(String username);
-
 }

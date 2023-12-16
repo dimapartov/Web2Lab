@@ -73,10 +73,10 @@ public class UserServiceImpl implements UserService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    @Override
+/*    @Override
     @Transactional
     public void deleteUserByUserName(String username) {
         userRepository.deleteUserByUsername(username);
-    }
+    }*/
 
 }

@@ -24,6 +24,8 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     List<Offer> findAllByEngineType(EngineTypeEnum engineType);
     List<Offer> findAllByTransmissionType(TransmissionTypeEnum transmissionType);
     List<Offer> findAllBySellerUsername(String username);
+
+
     List<Offer> findAllByModelName(String modelName);
 
     @Query(value = "SELECT new com.example.websecondlab.web.view.OfferFullViewModel" +

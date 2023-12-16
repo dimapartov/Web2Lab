@@ -13,6 +13,6 @@ public interface UserService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-    void deleteUserByUserName(String username);
+/*    void deleteUserByUserName(String username);*/
 
 }

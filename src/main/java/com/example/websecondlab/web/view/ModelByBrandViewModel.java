@@ -1,14 +1,16 @@
 package com.example.websecondlab.web.view;
 
+import com.example.websecondlab.consts.enums.CategoryEnum;
+
 public class ModelByBrandViewModel {
 
     private String brand;
     private String name;
-    private String category;
+    private CategoryEnum category;
     private int startYear;
     private int endYear;
 
-    public ModelByBrandViewModel(String brand, String name, String category, int startYear, int endYear) {
+    public ModelByBrandViewModel(String brand, String name, CategoryEnum category, int startYear, int endYear) {
         this.brand = brand;
         this.name = name;
         this.category = category;
@@ -25,7 +27,7 @@ public class ModelByBrandViewModel {
     public String getName() {
         return name;
     }
-    public String getCategory() {
+    public CategoryEnum getCategory() {
         return category;
     }
     public int getStartYear() {
@@ -42,7 +44,7 @@ public class ModelByBrandViewModel {
     public void setName(String name) {
         this.name = name;
     }
-    public void setCategory(String category) {
+    public void setCategory(CategoryEnum category) {
         this.category = category;
     }
     public void setStartYear(int startYear) {

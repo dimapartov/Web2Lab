@@ -55,7 +55,11 @@ public class OfferController {
     @GetMapping("/by-model/{modelName}")
     public String getAllOffersByModel(@PathVariable String modelName, Model model) {
         LOG.log(Level.INFO, "Show offers by model: " + modelName);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         model.addAttribute("allOffers", offerService.getAllOffersByModel(modelName));
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
         return "offers-all";
     }
 
@@ -104,7 +108,11 @@ public class OfferController {
     @GetMapping("/top-10-cheapest-by-model")
     public String getTop10CheapestOffersForModel(Model model) {
         LOG.log(Level.INFO, "Show top 10 cheapest offers by popular model");
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         model.addAttribute("allOffers", offerService.getTop10CheapestOffersForModel());
+        stopWatch.stop();
+        System.out.println(stopWatch.getTotalTimeMillis());
         return "offers-all";
     }
 }
