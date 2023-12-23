@@ -163,7 +163,6 @@ public class OfferServiceImpl implements OfferService {
         return modelMapper.map(offerRepository.getOfferFullInfo(offerId), OfferFullViewModel.class);
     }
 
-    @CacheEvict(cacheNames = {"offers"}, allEntries = true)
     @Override
     public List<OfferDemoViewModel> getFilteredOffers(Optional<List<String>> engineTypes,
                                                       Optional<List<String>> transmissionTypes,
