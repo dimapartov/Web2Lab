@@ -49,16 +49,6 @@ public class BrandServiceImpl implements BrandService {
 //----------------------------------------------------------------------------------------------------------------------
 //    Business
 
-//    @Cacheable(value = "brands", key = "#root.methodName")
-//    @Override
-//    public List<BrandViewModel> getAllBrands() {
-//        List<BrandViewModel> allBrands = brandRepository.findAll()
-//                .stream()
-//                .map(brand -> modelMapper.map(brand, BrandViewModel.class))
-//                .toList();
-//        return allBrands;
-//    }
-
     @Cacheable(value = "brands", key = "#root.methodName")
     @Override
     public List<BrandViewModel> getAllBrands() {
