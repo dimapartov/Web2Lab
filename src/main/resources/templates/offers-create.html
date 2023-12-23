@@ -107,8 +107,8 @@
             .then(modelsByBrand => {
                 modelsByBrand.forEach(model => {
                     var option = document.createElement('option');
-                    option.value = model.modelName;
-                    option.text = model.modelName;
+                    option.value = model.name;
+                    option.text = model.name;
                     modelDropdown.appendChild(option);
                 });
             });
