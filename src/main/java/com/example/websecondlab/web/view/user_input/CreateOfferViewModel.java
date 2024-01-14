@@ -1,5 +1,9 @@
 package com.example.websecondlab.web.view.user_input;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class CreateOfferViewModel {
 
     private String seller;
@@ -37,12 +41,18 @@ public class CreateOfferViewModel {
     public String getModelName() {
         return modelName;
     }
+
+    @Min(value = 1, message = "Year must be greater than 0")
     public int getYear() {
         return year;
     }
+
+    @Min(value = 1, message = "Price must be greater than 0")
     public int getPrice() {
         return price;
     }
+
+    @Min(value = 1, message = "Mileage must be greater than 0")
     public int getMileage() {
         return mileage;
     }
@@ -52,6 +62,9 @@ public class CreateOfferViewModel {
     public String getEngineType() {
         return engineType;
     }
+
+    @NotNull(message = "Description cannot be empty")
+    @NotEmpty(message = "Description cannot be empty")
     public String getDescription() {
         return description;
     }
