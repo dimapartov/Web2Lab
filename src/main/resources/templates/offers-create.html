@@ -1,7 +1,7 @@
 <html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
-<body class="d-flex flex-column d-flex ">
+<body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/navbar}"></div>
 <main class="flex-shrink-0">
     <div class="container">
@@ -82,7 +82,7 @@
                         <textarea th:field="*{description}" class="form-control" id="description" name="description" style="height: 200px; resize: none;"></textarea>
                     </div>
                     <h4>
-                        <button type="submit" class="btnPostOffer">Post</button>
+                        <button type="submit" class="btn btn-primary btnPostOffer">Create</button>
                     </h4>
                 </form>
             </main>
