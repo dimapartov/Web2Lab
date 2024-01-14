@@ -53,8 +53,6 @@
                     <div class="card-deck mt-3">
                         <div th:each="o : ${allOffers}" class="card">
                             <div class="card-body text-center">
-                                <img th:src="${o.imageUrl}" alt="Offer Image" class="card-img-top"
-                                    style="max-height: 200px; object-fit: cover;">
                                 <h5 class="card-title" th:text="${o.brand + ' ' + o.model}"></h5>
                                 <p class="card-text">
                                     <strong>Price:</strong> <span th:text="${o.price}"></span><br>
